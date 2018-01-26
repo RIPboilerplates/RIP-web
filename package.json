@@ -58,7 +58,10 @@
           ],
           "extensions": [
             ".js"
-          ]
+          ],
+          "alias": {
+            "store": "./app/store"
+          }
         }
       ]
     ],
@@ -209,7 +212,8 @@
       "!app/global-styles.js",
       "!app/*/*/Loadable.{js,jsx}",
       "!app/*/*/constants.{js,jsx}",
-      "!app/config/*.{js,jsx}"
+      "!app/config/*.{js,jsx}",
+      "!app/themes/*.{js,jsx}"
     ],
     "coverageThreshold": {
       "global": {
