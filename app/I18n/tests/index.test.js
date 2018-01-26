@@ -1,5 +1,5 @@
-import { DEFAULT_LOCALE } from '../config/locale'
-import { formatTranslationMessages } from '../i18n'
+import { DEFAULT_LOCALE } from 'config/locale'
+import { formatTranslationMessages } from '../'
 
 jest.mock('../translations/en.json', () => (
   {

@@ -14,8 +14,8 @@ const pkg = require('../../package.json')
 const presets = pkg.babel.presets
 const plugins = pkg.babel.plugins || []
 
-const i18n = require('../../app/i18n')
-import { DEFAULT_LOCALE } from '../../app/containers/App/constants'
+const i18n = require('I18n')
+import { DEFAULT_LOCALE } from 'config/locale'
 
 require('shelljs/global')
 
