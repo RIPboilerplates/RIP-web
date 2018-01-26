@@ -1,7 +1,7 @@
-import { fromJS } from 'immutable';
+import { fromJS } from 'immutable'
 import {
   LOCATION_CHANGE,
-} from './constants';
+} from './constants'
 
 /*
  * routeReducer
@@ -14,7 +14,7 @@ import {
 // Initial routing state
 const routeInitialState = fromJS({
   location: null,
-});
+})
 
 /**
  * Merge route into the global application state
@@ -24,8 +24,8 @@ export const reducer = (state = routeInitialState, action) => {
     case LOCATION_CHANGE:
       return state.merge({
         location: action.payload,
-      });
+      })
     default:
-      return state;
+      return state
   }
-};
+}

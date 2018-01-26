@@ -1,19 +1,19 @@
 import {
   changeLocale,
-} from '../';
+} from '../'
 
 import {
   CHANGE_LOCALE,
-} from '../constants';
+} from '../constants'
 
 describe('Language actions', () => {
   describe('changeLocale(locale)', () => {
     it('has a type of CHANGE_LOCALE', () => {
       const expected = {
-        type: CHANGE_LOCALE,
+        type:   CHANGE_LOCALE,
         locale: 'de',
-      };
-      expect(changeLocale('de')).toEqual(expected);
-    });
-  });
-});
+      }
+      expect(changeLocale('de')).toEqual(expected)
+    })
+  })
+})

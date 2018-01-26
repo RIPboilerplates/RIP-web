@@ -2,28 +2,28 @@
  * COMMON WEBPACK CONFIGURATION
  */
 
-const path = require('path');
-const webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
 
 // Remove this line once the following warning goes away (it was meant for webpack loader authors not users):
 // 'DeprecationWarning: loaderUtils.parseQuery() received a non-string value which can be problematic,
 // see https://github.com/webpack/loader-utils/issues/56 parseQuery() will be replaced with getOptions()
 // in the next major version of loader-utils.'
-process.noDeprecation = true;
+process.noDeprecation = true
 
 module.exports = (options) => ({
-  entry: options.entry,
+  entry:  options.entry,
   output: Object.assign({ // Compile into js/build.js
-    path: path.resolve(process.cwd(), 'build'),
+    path:       path.resolve(process.cwd(), 'build'),
     publicPath: '/',
   }, options.output), // Merge with env dependent settings
   module: {
     rules: [
       {
-        test: /\.js$/, // Transform all .js files required somewhere with Babel
+        test:    /\.js$/, // Transform all .js files required somewhere with Babel
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
+        use:     {
+          loader:  'babel-loader',
           options: options.babelQuery,
         },
       },
@@ -31,33 +31,33 @@ module.exports = (options) => ({
         // Preprocess our own .css files
         // This is the place to add your own loaders (e.g. sass/less etc.)
         // for a list of loaders, see https://webpack.js.org/loaders/#styling
-        test: /\.css$/,
+        test:    /\.css$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader'],
+        use:     ['style-loader', 'css-loader'],
       },
       {
         // Preprocess 3rd party .css files located in node_modules
-        test: /\.css$/,
+        test:    /\.css$/,
         include: /node_modules/,
-        use: ['style-loader', 'css-loader'],
+        use:     ['style-loader', 'css-loader'],
       },
       {
         test: /\.(eot|svg|otf|ttf|woff|woff2)$/,
-        use: 'file-loader',
+        use:  'file-loader',
       },
       {
         test: /\.(jpg|png|gif)$/,
-        use: [
+        use:  [
           'file-loader',
           {
-            loader: 'image-webpack-loader',
+            loader:  'image-webpack-loader',
             options: {
-              progressive: true,
+              progressive:       true,
               optimizationLevel: 7,
-              interlaced: false,
-              pngquant: {
+              interlaced:        false,
+              pngquant:          {
                 quality: '65-90',
-                speed: 4,
+                speed:   4,
               },
             },
           },
@@ -65,16 +65,16 @@ module.exports = (options) => ({
       },
       {
         test: /\.html$/,
-        use: 'html-loader',
+        use:  'html-loader',
       },
       {
         test: /\.json$/,
-        use: 'json-loader',
+        use:  'json-loader',
       },
       {
         test: /\.(mp4|webm)$/,
-        use: {
-          loader: 'url-loader',
+        use:  {
+          loader:  'url-loader',
           options: {
             limit: 10000,
           },
@@ -99,7 +99,7 @@ module.exports = (options) => ({
     new webpack.NamedModulesPlugin(),
   ]),
   resolve: {
-    modules: ['app', 'node_modules'],
+    modules:    ['app', 'node_modules'],
     extensions: [
       '.js',
       '.jsx',
@@ -111,7 +111,7 @@ module.exports = (options) => ({
       'main',
     ],
   },
-  devtool: options.devtool,
-  target: 'web', // Make web variables accessible to webpack, e.g. window
+  devtool:     options.devtool,
+  target:      'web', // Make web variables accessible to webpack, e.g. window
   performance: options.performance || {},
-});
+})

@@ -2,21 +2,21 @@
  * Create the store with dynamic reducers
  */
 
-import { createStore, applyMiddleware, compose } from 'redux';
-import { fromJS } from 'immutable';
-import { routerMiddleware } from 'react-router-redux';
-import createReducer from './reducers';
+import { createStore, applyMiddleware, compose } from 'redux'
+import { fromJS } from 'immutable'
+import { routerMiddleware } from 'react-router-redux'
+import createReducer from './reducers'
 
 export default function configureStore(initialState = {}, history) {
   // Create the store with middlewares
   // 1. routerMiddleware: Syncs the location/URL path to the state
   const middlewares = [
     routerMiddleware(history),
-  ];
+  ]
 
   const enhancers = [
     applyMiddleware(...middlewares),
-  ];
+  ]
 
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */
@@ -29,25 +29,25 @@ export default function configureStore(initialState = {}, history) {
         // Prevent recomputing reducers for `replaceReducer`
         shouldHotReload: false,
       })
-      : compose;
+      : compose
   /* eslint-enable */
 
   const store = createStore(
     createReducer(),
     fromJS(initialState),
     composeEnhancers(...enhancers)
-  );
+  )
 
   // Extensions
-  store.injectedReducers = {}; // Reducer registry
+  store.injectedReducers = {} // Reducer registry
 
   // Make reducers hot reloadable, see http://mxs.is/googmo
   /* istanbul ignore next */
   if (module.hot) {
     module.hot.accept('./reducers', () => {
-      store.replaceReducer(createReducer(store.injectedReducers));
-    });
+      store.replaceReducer(createReducer(store.injectedReducers))
+    })
   }
 
-  return store;
+  return store
 }

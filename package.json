@@ -110,6 +110,16 @@
       }
     },
     "rules": {
+      "semi": [
+        "error",
+        "never"
+      ],
+      "key-spacing": [
+        "error",
+        {
+          "align": "value"
+        }
+      ],
       "arrow-parens": [
         "error",
         "always"
@@ -196,7 +206,8 @@
       "!app/app.js",
       "!app/global-styles.js",
       "!app/*/*/Loadable.{js,jsx}",
-      "!app/*/*/constants.{js,jsx}"
+      "!app/*/*/constants.{js,jsx}",
+      "!app/config/*.{js,jsx}"
     ],
     "coverageThreshold": {
       "global": {
@@ -294,6 +305,8 @@
     "plop": "1.8.0",
     "pre-commit": "1.2.2",
     "react-test-renderer": "15.6.1",
+    "reactotron-react-js": "^1.13.0",
+    "reactotron-redux": "^1.13.0",
     "rimraf": "2.6.1",
     "shelljs": "^0.7.7",
     "style-loader": "0.18.1",
