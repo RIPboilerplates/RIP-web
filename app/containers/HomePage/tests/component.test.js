@@ -5,7 +5,7 @@ import { shallow } from 'enzyme'
 import HomePage from '../component'
 import messages from '../messages'
 
-describe('<HomePage />', () => {
+describe('HomePage Component', () => {
   it('should render the page message', () => {
     const renderedComponent = shallow(
       <HomePage />

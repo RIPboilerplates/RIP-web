@@ -1,12 +1,12 @@
 /**
  *
- * Asynchronously loads the component for {{ properCase name }}
+ * {{ properCase name }} Asynchronous loads
  *
  */
 
 import Loadable from 'react-loadable'
 
 export default Loadable({
-  loader: () => import('./index'),
+  loader:  () => import('./index'),
   loading: () => null,
 })

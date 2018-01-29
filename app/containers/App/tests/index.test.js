@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom'
 
 import App from '../index'
 
-describe('<App />', () => {
+describe('App Component', () => {
   it('should render some routes', () => {
     const renderedComponent = shallow(
       <App />

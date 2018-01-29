@@ -4,13 +4,13 @@ import renderer from 'utils/renderIntl'
 
 import Component from '../'
 
-describe('<NotFoundPage />', () => {
-  it('should not load by default', () => {
+describe('NotFoundPage Component', () => {
+  it('not load by default', () => {
     const component = renderer(<Component />).toJSON()
     expect(component).toBeNull()
   })
 
-  it('should load the component', async () => {
+  it('does load the component', async () => {
     await Loadable.preloadAll()
     const component = renderer(<Component />).toJSON()
     expect(component).not.toBeNull()

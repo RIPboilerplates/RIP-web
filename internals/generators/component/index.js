@@ -15,7 +15,7 @@ module.exports = {
     name:    'type',
     message: 'Select the type of component',
     default: 'Stateless Function',
-    choices: () => ['Stateless Function', 'React.PureComponent', 'React.Component'],
+    choices: () => ['Stateless Function', 'React.Component', 'React.PureComponent'],
   }, {
     type:     'input',
     name:     'name',
@@ -37,11 +37,12 @@ module.exports = {
     type:    'confirm',
     name:    'wantLoadable',
     default: false,
-    message: 'Do you want to load the component asynchronously?',
+    message: 'Do you want to load the component asynchronously (i.e. action needed to display this)?',
   }],
   actions: (data) => {
     // Generate index.js and index.test.js
     let componentTemplate
+    let indexTemplate
 
     switch (data.type) {
       case 'Stateless Function': {
@@ -53,16 +54,43 @@ module.exports = {
       }
     }
 
+    // If want Loadable.js to load the component asynchronously
+    switch (data.wantLoadable) {
+      case true: {
+        indexTemplate = './component/loadable.js.hbs'
+        break
+      }
+      default: {
+        indexTemplate = './component/index.js.hbs'
+        break
+      }
+    }
+
     const actions = [{
       type:         'add',
       path:         '../../app/components/{{properCase name}}/index.js',
+      templateFile: indexTemplate,
+      abortOnFail:  true,
+    }, {
+      type:         'add',
+      path:         '../../app/components/{{properCase name}}/component.js',
       templateFile: componentTemplate,
       abortOnFail:  true,
     }, {
       type:         'add',
-      path:         '../../app/components/{{properCase name}}/tests/index.test.js',
-      templateFile: './component/test.js.hbs',
+      path:         '../../app/components/{{properCase name}}/tests/component.test.js',
+      templateFile: './component/component.test.js.hbs',
       abortOnFail:  true,
+    }, {
+      type:         'add',
+      path:         '../../app/components/{{properCase name}}/styles.js',
+      templateFile: './component/styles.js.hbs',
+      abortOnFail:  true,
+    }, {
+      type:         'modify',
+      path:         '../../app/components/index.js',
+      pattern:      /([\s\S]*)/,
+      templateFile: './component/component-export.hbs',
     }]
 
     // If they want a i18n messages file
@@ -71,16 +99,6 @@ module.exports = {
         type:         'add',
         path:         '../../app/components/{{properCase name}}/messages.js',
         templateFile: './component/messages.js.hbs',
-        abortOnFail:  true,
-      })
-    }
-
-    // If want Loadable.js to load the component asynchronously
-    if (data.wantLoadable) {
-      actions.push({
-        type:         'add',
-        path:         '../../app/components/{{properCase name}}/Loadable.js',
-        templateFile: './component/loadable.js.hbs',
         abortOnFail:  true,
       })
     }

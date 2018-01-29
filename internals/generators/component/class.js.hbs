@@ -1,25 +1,28 @@
 /**
 *
-* {{ properCase name }}
+* {{ properCase name }} Component
 *
 */
 
 import React from 'react'
-// import styled from 'styled-components'
+// import PropTypes from 'prop-types'
 
 {{#if wantMessages}}
 import { FormattedMessage } from 'react-intl'
+
 import messages from './messages'
 {{/if}}
+import Styled from './styles'
+
 
 class {{ properCase name }} extends {{{ type }}} { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div>
+      <Styled.Container>
       {{#if wantMessages}}
         <FormattedMessage {...messages.header} />
       {{/if}}
-      </div>
+      </Styled.Container>
     )
   }
 }

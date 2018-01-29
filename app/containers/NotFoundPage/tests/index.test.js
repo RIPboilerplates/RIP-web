@@ -1,17 +1,16 @@
 import React from 'react'
-import Loadable from 'react-loadable'
 import renderer from 'utils/renderIntl'
 
 import Component from '../'
 
-describe('<NotFoundPage />', () => {
-  it('should not load by default', () => {
+describe('NotFoundPage Component', () => {
+  it('not load by default', () => {
     const component = renderer(<Component />).toJSON()
     expect(component).toBeNull()
   })
 
-  it('should load the component', async () => {
-    await Loadable.preloadAll()
+  it('does load the component', async () => {
+    await Component.preload()
     const component = renderer(<Component />).toJSON()
     expect(component).not.toBeNull()
   })
