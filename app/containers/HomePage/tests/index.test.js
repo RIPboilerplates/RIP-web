@@ -1,17 +1,18 @@
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
-import { shallow } from 'enzyme'
+import Loadable from 'react-loadable'
+import renderer from 'utils/renderIntl'
 
-import HomePage from '../index'
-import messages from '../messages'
+import Component from '../'
 
-describe('<HomePage />', () => {
-  it('should render the page message', () => {
-    const renderedComponent = shallow(
-      <HomePage />
-    )
-    expect(renderedComponent.contains(
-      <FormattedMessage {...messages.header} />
-    )).toEqual(true)
+describe('<NotFoundPage />', () => {
+  it('should not load by default', () => {
+    const component = renderer(<Component />).toJSON()
+    expect(component).toBeNull()
+  })
+
+  it('should load the component', async () => {
+    await Loadable.preloadAll()
+    const component = renderer(<Component />).toJSON()
+    expect(component).not.toBeNull()
   })
 })
