@@ -7,56 +7,33 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-{{#if wantHeaders}}
-import { Helmet } from 'react-helmet'
-{{/if}}
-{{#if wantMessages}}
-import { FormattedMessage } from 'react-intl'
-{{/if}}
-{{#if wantActionsAndReducer}}
+import { bindActionCreators } from 'redux'
 import { createStructuredSelector } from 'reselect'
+{{#if wantLoadable}}
+import Loadable from 'react-loadable'
+{{/if}}
+
+import Component from './component'
 import makeSelect{{properCase name}} from './selectors'
-{{/if}}
-{{#if wantMessages}}
-import messages from './messages'
-{{/if}}
 
-export class {{ properCase name }} extends React.{{{ component }}} { // eslint-disable-line react/prefer-stateless-function
-  render() {
-    return (
-      <div>
-      {{#if wantHeaders}}
-        <Helmet>
-          <title>{{properCase name}}</title>
-          <meta name="description" content="Description of {{properCase name}}" />
-        </Helmet>
-      {{/if}}
-      {{#if wantMessages}}
-        <FormattedMessage {...messages.header} />
-      {{/if}}
-      </div>
-    )
-  }
-}
-
-{{ properCase name }}.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-}
-
-{{#if wantActionsAndReducer}}
 const mapStateToProps = createStructuredSelector({
-  {{name}}: makeSelect{{properCase name}}(),
+  {{camelCase name}}: makeSelect{{properCase name}}(),
 })
-{{/if}}
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  }
-}
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({
+    // {{ properCase name }} Actions
+  }, dispatch)
+)
 
-{{#if wantActionsAndReducer}}
-export default connect(mapStateToProps, mapDispatchToProps)({{ properCase name }})
+const {{ properCase name }} = connect(mapStateToProps, mapDispatchToProps)({{ properCase name }})
+{{#if wantLoadable}}
+export {{ properCase name }}
+
+export default Loadable({
+  loader:  () => Component,
+  loading: () => null,
+})
 {{else}}
-export default connect(null, mapDispatchToProps)({{ properCase name }})
+export default {{ properCase name }}
 {{/if}}

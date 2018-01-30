@@ -18,7 +18,7 @@ const messages = defineMessages({
   },
 })
 
-describe('<LanguageProvider />', () => {
+describe('LanguageProvider Component', () => {
   it('should render its children', () => {
     const children = (<h1>Test</h1>)
     const renderedComponent = shallow(
@@ -30,7 +30,7 @@ describe('<LanguageProvider />', () => {
   })
 })
 
-describe('<ConnectedLanguageProvider />', () => {
+describe('ConnectedLanguageProvider Component', () => {
   let store
 
   beforeAll(() => {

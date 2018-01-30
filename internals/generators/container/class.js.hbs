@@ -1,42 +1,24 @@
 /**
  *
- * {{properCase name }}
+ * {{properCase name }} Component
  *
  */
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 {{#if wantHeaders}}
 import { Helmet } from 'react-helmet'
 {{/if}}
 {{#if wantMessages}}
 import { FormattedMessage } from 'react-intl'
-{{/if}}
-{{#if wantActionsAndReducer}}
-import { createStructuredSelector } from 'reselect'
-{{/if}}
-import { compose } from 'redux'
-
-{{#if wantSaga}}
-import injectSaga from 'utils/injectSaga'
-{{/if}}
-{{#if wantActionsAndReducer}}
-import injectReducer from 'utils/injectReducer'
-import makeSelect{{properCase name}} from './selectors'
-import reducer from './reducer'
-{{/if}}
-{{#if wantSaga}}
-import saga from './saga'
-{{/if}}
-{{#if wantMessages}}
 import messages from './messages'
 {{/if}}
+import Styled from './styles'
 
 export class {{ properCase name }} extends {{{ type }}} { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <div>
+      <Styled.Container>
       {{#if wantHeaders}}
         <Helmet>
           <title>{{properCase name}}</title>
@@ -46,44 +28,13 @@ export class {{ properCase name }} extends {{{ type }}} { // eslint-disable-line
       {{#if wantMessages}}
         <FormattedMessage {...messages.header} />
       {{/if}}
-      </div>
+      </Styled.Container>
     )
   }
 }
 
 {{ properCase name }}.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  // prop types
 }
 
-{{#if wantActionsAndReducer}}
-const mapStateToProps = createStructuredSelector({
-  {{ lowerCase name }}: makeSelect{{properCase name}}(),
-})
-{{/if}}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  }
-}
-
-{{#if wantActionsAndReducer}}
-const withConnect = connect(mapStateToProps, mapDispatchToProps)
-
-const withReducer = injectReducer({ key: '{{ camelCase name }}', reducer })
-{{else}}
-const withConnect = connect(null, mapDispatchToProps)
-{{/if}}
-{{#if wantSaga}}
-const withSaga = injectSaga({ key: '{{ camelCase name }}', saga })
-{{/if}}
-
-export default compose(
-{{#if wantActionsAndReducer}}
-  withReducer,
-{{/if}}
-{{#if wantSaga}}
-  withSaga,
-{{/if}}
-  withConnect,
-)({{ properCase name }})
+export default {{ properCase name }}

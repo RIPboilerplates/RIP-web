@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import { createSelector } from 'reselect'
 
 import LanguageProvider from './component'
@@ -9,10 +10,10 @@ const mapStateToProps = createSelector(
   (locale) => ({ locale })
 )
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  }
-}
+const mapDispatchToProps = (dispatch) => (
+  bindActionCreators({
+    // LanguageProvider Actions
+  }, dispatch)
+)
 
 export default connect(mapStateToProps, mapDispatchToProps)(LanguageProvider)
