@@ -71,6 +71,11 @@ module.exports = {
       path:         '../../app/containers/{{properCase name}}/tests/selectors.test.js',
       templateFile: './container/selectors.test.js.hbs',
       abortOnFail:  true,
+    }, {
+      type:         'modify',
+      path:         '../../app/containers/index.js',
+      pattern:      /([\s\S]*)/,
+      templateFile: './container/component-export.hbs',
     }]
 
     // If component wants messages

@@ -1,15 +1,14 @@
 import { fromJS } from 'immutable'
 
-import {
-  select{{ properCase name }}Domain
-} from '../selectors'
+import makeSelect{{ properCase name }} from '../selectors'
 
 describe('select{{ properCase name }}Domain', () => {
+  const {{ camelCase name }}Selector = makeSelect{{ properCase name }}()
   it('should select the global state', () => {
-    const globalState = fromJS({})
+    const globalState = {}
     const mockedState = fromJS({
-      // add expected variables
+      {{ camelCase name }}: globalState,
     })
-    expect(select{{ properCase name }}Domain(mockedState)).toEqual(globalState)
+    expect({{ camelCase name }}Selector(mockedState)).toEqual(globalState)
   })
 })
