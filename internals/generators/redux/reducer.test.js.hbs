@@ -1,0 +1,16 @@
+import { reducer } from '../reducer'
+
+import {
+  {{ constantCase actionName }},
+  INITIAL_STATE,
+} from '../constants'
+
+describe('{{ camelCase name }} reducer', () => {
+  it('returns the initial state', () => {
+    expect(reducer(undefined, {}).toJS()).toEqual(INITIAL_STATE)
+  })
+
+  it('returns state for {{ constantCase actionName }}', () => {
+    expect(reducer(undefined, { type: {{ constantCase actionName }} }).toJS()).toEqual(INITIAL_STATE)
+  })
+})

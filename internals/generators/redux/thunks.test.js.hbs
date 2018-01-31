@@ -1,0 +1,12 @@
+import {
+  {{ camelCase actionName }}Thunk,
+} from '../thunks'
+
+describe('{{ properCase name }} thunks', () => {
+  describe('{{ camelCase actionName }}Thunk', () => {
+    it('resolves asynchronously', async () => {
+      const response = await {{ camelCase actionName }}Thunk()
+      expect(response).toEqual('YAY!!')
+    })
+  })
+})

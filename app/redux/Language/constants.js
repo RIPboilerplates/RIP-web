@@ -4,4 +4,7 @@
  *
  */
 
-export const CHANGE_LOCALE = 'app/LanguageToggle/CHANGE_LOCALE'
+/* eslint-disable no-multi-spaces */
+const PREFIX               = 'LANGUAGE_PROVIDER'
+export const CHANGE_LOCALE = `${PREFIX}/CHANGE_LOCALE`
+/* eslint-enable no-multi-spaces */

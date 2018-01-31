@@ -1,0 +1,22 @@
+/*
+ *
+ * {{ properCase name }} reducer
+ *
+ */
+
+import { fromJS } from 'immutable'
+import {
+  {{ constantCase actionName }},
+  INITIAL_STATE,
+} from './constants'
+
+const initialState = fromJS(INITIAL_STATE)
+
+export const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case {{ constantCase actionName }}:
+      return state
+    default:
+      return state
+  }
+}

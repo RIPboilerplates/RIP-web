@@ -5,18 +5,20 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import { fromJS } from 'immutable'
 import { routerMiddleware } from 'react-router-redux'
+import promise from 'redux-promise-middleware'
+import ReduxThunk from 'redux-thunk'
 import createReducer from './reducers'
 
 export default function configureStore(initialState = {}, history) {
-  // Create the store with middlewares
-  // 1. routerMiddleware: Syncs the location/URL path to the state
-  const middlewares = [
-    routerMiddleware(history),
-  ]
+  /* -------------  Middleware ------------- */
+  const middlewares = []
+  middlewares.push(routerMiddleware(history))
+  middlewares.push(ReduxThunk)
+  middlewares.push(promise())
 
-  const enhancers = [
-    applyMiddleware(...middlewares),
-  ]
+  /* ------------- Enhancers ------------- */
+  const enhancers = []
+  enhancers.push(applyMiddleware(...middlewares))
 
   // If Redux DevTools Extension is installed use it, otherwise use Redux compose
   /* eslint-disable no-underscore-dangle */

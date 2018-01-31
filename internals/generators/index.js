@@ -9,10 +9,12 @@ const path = require('path')
 const componentGenerator = require('./component/index.js')
 const containerGenerator = require('./container/index.js')
 const languageGenerator = require('./language/index.js')
+const reduxGenerator = require('./redux/index.js')
 
 module.exports = (plop) => {
   plop.setGenerator('component', componentGenerator)
   plop.setGenerator('container', containerGenerator)
+  plop.setGenerator('redux', reduxGenerator)
   plop.setGenerator('language', languageGenerator)
   plop.addHelper('directory', (comp) => {
     try {
@@ -23,4 +25,5 @@ module.exports = (plop) => {
     }
   })
   plop.addHelper('curly', (object, open) => (open ? '{' : '}'))
+  plop.setHelper('isEquals', (arg1, arg2, options) => (arg1 === arg2) ? options.fn(this) : options.inverse(this))
 }

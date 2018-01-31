@@ -1,0 +1,9 @@
+{{#if isDefaultAction actionName}}
+  export const DEFAULT_ACTION = `${{ curly true }}PREFIX{{ curly }}/DEFAULT_ACTION`
+{{else}}
+  export const {{ constantCase actionName }}           = `${{ curly true }}PREFIX{{ curly }}/{{ constantCase actionName }}`
+  export const {{ constantCase actionName }}_PENDING   = `${{ curly true }}PREFIX{{ curly }}/{{ constantCase actionName }}_PENDING`
+  export const {{ constantCase actionName }}_FULFILLED = `${{ curly true }}PREFIX{{ curly }}/{{ constantCase actionName }}_FULFILLED`
+  export const {{ constantCase actionName }}_REJECTED  = `${{ curly true }}PREFIX{{ curly }}/{{ constantCase actionName }}_REJECTED`
+{{/if}}
+$1

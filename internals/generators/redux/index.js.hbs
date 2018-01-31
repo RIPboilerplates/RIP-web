@@ -1,0 +1,18 @@
+/*
+ *
+ * {{ properCase name }} actions
+ *
+ */
+
+import {
+  {{ constantCase actionName }},
+} from './constants'
+
+import {
+  {{ camelCase actionName }}Thunk,
+} from './thunks'
+
+export const {{ camelCase actionName }} = () => ({
+  type:    {{ constantCase actionName }},
+  payload: {{ camelCase actionName }}Thunk(),
+})

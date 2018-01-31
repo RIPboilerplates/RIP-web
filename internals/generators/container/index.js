@@ -76,6 +76,7 @@ module.exports = {
       path:         '../../app/containers/index.js',
       pattern:      /([\s\S]*)/,
       templateFile: './container/component-export.hbs',
+      abortOnFail:  true,
     }]
 
     // If component wants messages

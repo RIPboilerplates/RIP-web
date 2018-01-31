@@ -1,0 +1,15 @@
+import {
+  {{ camelCase actionName }},
+} from '../'
+
+import {
+  {{ constantCase actionName }},
+} from '../constants'
+
+describe('{{ properCase name }} actions', () => {
+  describe('Default Action', () => {
+    it('has a type of {{ constantCase actionName }}', () => {
+      expect({{ camelCase actionName }}().type).toEqual({{ constantCase actionName }})
+    })
+  })
+})
