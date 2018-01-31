@@ -13,4 +13,8 @@ export const {{ constantCase actionName }}_FULFILLED = `${{ curly true }}PREFIX{
 export const {{ constantCase actionName }}_REJECTED  = `${{ curly true }}PREFIX{{ curly }}/{{ constantCase actionName }}_REJECTED`
 /* eslint-enable no-multi-spaces */
 
-export const INITIAL_STATE = {}
+export const INITIAL_STATE = {
+  fetching: null,
+  fetched:  null,
+  error:    null,
+}

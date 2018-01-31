@@ -6,7 +6,9 @@
 
 import { fromJS } from 'immutable'
 import {
-  {{ constantCase actionName }},
+  {{ constantCase actionName }}_PENDING,
+  {{ constantCase actionName }}_FULFILLED,
+  {{ constantCase actionName }}_REJECTED,
   INITIAL_STATE,
 } from './constants'
 
@@ -14,8 +16,21 @@ const initialState = fromJS(INITIAL_STATE)
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case {{ constantCase actionName }}:
+    case {{ constantCase actionName }}_PENDING:
       return state
+        .set('fetching', true)
+        .set('fetched', false)
+        .set('error', null)
+    case {{ constantCase actionName }}_FULFILLED:
+      return state
+        .set('fetching', false)
+        .set('fetched', true)
+        .set('error', null)
+    case {{ constantCase actionName }}_REJECTED:
+      return state
+        .set('fetching', false)
+        .set('fetched', true)
+        .set('error', action.payload)
     default:
       return state
   }

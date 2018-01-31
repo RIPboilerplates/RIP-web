@@ -1,16 +1,47 @@
 import { reducer } from '../reducer'
 
 import {
-  {{ constantCase actionName }},
+  {{ constantCase actionName }}_PENDING,
+  {{ constantCase actionName }}_FULFILLED,
+  {{ constantCase actionName }}_REJECTED,
   INITIAL_STATE,
 } from '../constants'
 
 describe('{{ camelCase name }} reducer', () => {
+  let result
+  beforeEach(() => {
+    result = null
+  })
+
   it('returns the initial state', () => {
     expect(reducer(undefined, {}).toJS()).toEqual(INITIAL_STATE)
   })
 
-  it('returns state for {{ constantCase actionName }}', () => {
-    expect(reducer(undefined, { type: {{ constantCase actionName }} }).toJS()).toEqual(INITIAL_STATE)
+  it('returns state for {{ constantCase actionName }}_PENDING', () => {
+    result = {
+      fetching: true,
+      fetched:  false,
+      error:    null,
+    }
+    expect(reducer(undefined, { type: {{ constantCase actionName }}_PENDING }).toJS()).toEqual(result)
+  })
+
+  it('returns state for {{ constantCase actionName }}_FULFILLED', () => {
+    result = {
+      fetching: false,
+      fetched:  true,
+      error:    null,
+    }
+    expect(reducer(undefined, { type: {{ constantCase actionName }}_FULFILLED }).toJS()).toEqual(result)
+  })
+
+  it('returns state for {{ constantCase actionName }}_REJECTED', () => {
+    const error = 'error'
+    result = {
+      fetching: false,
+      fetched:  true,
+      error,
+    }
+    expect(reducer(undefined, { type: {{ constantCase actionName }}_REJECTED, payload: error }).toJS()).toEqual(result)
   })
 })
