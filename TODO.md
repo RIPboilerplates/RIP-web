@@ -4,7 +4,6 @@
 * move `process` calls to config
 * move `process.stdout.write` into function
 * update `manifest.json`
-* move `mapStateToProps` into selector and rename to `index.js` and `index.js => component.js`
 * generator for adding new constants to redux
 
 ## Research

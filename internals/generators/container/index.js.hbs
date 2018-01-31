@@ -6,17 +6,28 @@
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+{{#if wantReselect}}
 import { createStructuredSelector } from 'reselect'
+{{/if}}
 {{#if wantLoadable}}
 import Loadable from 'react-loadable'
 {{/if}}
 
 import Component from './component'
+{{#if wantReselect}}
 import makeSelect{{properCase name}} from './selectors'
+{{/if}}
 
+{{#if wantReselect}}
 const mapStateToProps = createStructuredSelector({
   {{camelCase name}}: makeSelect{{properCase name}}(),
 })
+{{else}}
+const mapStateToProps = (state) => ({ // eslint-disable-line no-unused-vars
+  // {{ properCase name }} state selectors
+  // Once state is used remove eslint disable line above
+})
+{{/if}}
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({

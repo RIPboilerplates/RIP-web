@@ -39,6 +39,11 @@ module.exports = {
     name:    'wantLoadable',
     default: true,
     message: 'Do you want to load resources asynchronously?',
+  }, {
+    type:    'confirm',
+    name:    'wantReselect',
+    default: true,
+    message: 'Do you want an selector for this container (i.e. will the redux state be large/complex)?',
   }],
   actions: (data) => {
     const actions = [{
@@ -62,16 +67,6 @@ module.exports = {
       templateFile: './container/component.test.js.hbs',
       abortOnFail:  true,
     }, {
-      type:         'add',
-      path:         '../../app/containers/{{properCase name}}/selectors.js',
-      templateFile: './container/selectors.js.hbs',
-      abortOnFail:  true,
-    }, {
-      type:         'add',
-      path:         '../../app/containers/{{properCase name}}/tests/selectors.test.js',
-      templateFile: './container/selectors.test.js.hbs',
-      abortOnFail:  true,
-    }, {
       type:         'modify',
       path:         '../../app/containers/index.js',
       pattern:      /([\s\S]*)/,
@@ -79,7 +74,23 @@ module.exports = {
       abortOnFail:  true,
     }]
 
-    // If component wants messages
+    // Reselect
+    if (data.wantReselect) {
+      actions.push({
+        type:         'add',
+        path:         '../../app/containers/{{properCase name}}/selectors.js',
+        templateFile: './container/selectors.js.hbs',
+        abortOnFail:  true,
+      })
+      actions.push({
+        type:         'add',
+        path:         '../../app/containers/{{properCase name}}/tests/selectors.test.js',
+        templateFile: './container/selectors.test.js.hbs',
+        abortOnFail:  true,
+      })
+    }
+
+    // Messages
     if (data.wantMessages) {
       actions.push({
         type:         'add',
