@@ -1,5 +1,4 @@
 ## TODO
-* react-router-dom => react-navigation
 * esdoc
 * move `process` calls to config
 * move `process.stdout.write` into function
