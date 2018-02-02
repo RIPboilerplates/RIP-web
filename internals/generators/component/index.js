@@ -33,14 +33,17 @@ module.exports = {
     name:    'wantMessages',
     default: true,
     message: 'Do you want i18n messages (i.e. will this component use text)?',
-  }, {
-    type:    'confirm',
-    name:    'wantLoadable',
-    default: false,
-    message: 'Do you want to load the component asynchronously (i.e. action needed to display this)?',
+  // }, {
+  //   type:    'confirm',
+  //   name:    'wantLoadable',
+  //   default: false,
+  //   message: 'Do you want to load the component asynchronously (i.e. action needed to display this)?',
   }],
   actions: (data) => {
     data.directory = 'component' // eslint-disable-line no-param-reassign
+
+    // Temporarily removing loadable for simpler gsd
+    data.wantLoadable = false // eslint-disable-line no-param-reassign
 
     // Generate index.js and index.test.js
     let componentTemplate

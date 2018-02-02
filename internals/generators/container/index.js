@@ -34,11 +34,11 @@ module.exports = {
     name:    'wantMessages',
     default: true,
     message: 'Do you want i18n messages (i.e. will this component use text)?',
-  }, {
-    type:    'confirm',
-    name:    'wantLoadable',
-    default: true,
-    message: 'Do you want to load resources asynchronously?',
+  // }, {
+  //   type:    'confirm',
+  //   name:    'wantLoadable',
+  //   default: true,
+  //   message: 'Do you want to load resources asynchronously?',
   }, {
     type:    'confirm',
     name:    'wantReselect',
@@ -47,6 +47,9 @@ module.exports = {
   }],
   actions: (data) => {
     data.directory = 'container' // eslint-disable-line no-param-reassign
+
+    // Temporarily removing loadable for simpler gsd
+    data.wantLoadable = false // eslint-disable-line no-param-reassign
 
     const actions = [{
       type:         'add',
