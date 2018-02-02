@@ -1,5 +1,6 @@
 const shell = require('shelljs')
 const addCheckMark = require('./helpers/checkmark.js')
+const print = require('./helpers/print')
 
 if (!shell.which('git')) {
   shell.echo('Sorry, this script requires git')
@@ -11,7 +12,7 @@ if (!shell.test('-e', 'internals/templates')) {
   shell.exit(1)
 }
 
-process.stdout.write('Cleanup started...')
+print('Cleanup started...')
 
 // Reuse existing LanguageProvider and i18n tests
 shell.mv('app/containers/LanguageProvider/tests', 'internals/templates/containers/LanguageProvider')

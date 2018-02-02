@@ -1,10 +1,11 @@
 const chalk = require('chalk')
+const print = require('./print')
 
 /**
  * Adds mark cross symbol
  */
 function addXMark(callback) {
-  process.stdout.write(chalk.red(' ✘'))
+  print(chalk.red(' ✘'))
   if (callback) callback()
 }
 

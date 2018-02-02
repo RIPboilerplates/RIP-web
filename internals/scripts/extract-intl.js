@@ -9,6 +9,7 @@ const transform = require('babel-core').transform
 
 const animateProgress = require('./helpers/progress')
 const addCheckmark = require('./helpers/checkmark')
+const print = require('./helpers/print')
 
 const pkg = require('../../package.json')
 const presets = pkg.babel.presets
@@ -23,17 +24,18 @@ require('shelljs/global')
 const FILES_TO_PARSE = 'app/**/!(*.test).js'
 const locales = i18n.appLocales
 
-const newLine = () => process.stdout.write('\n')
+const newLine = () => print('\n')
+const printError = (text) => print(text, true)
 
 // Progress Logger
 let progress
 const task = (message) => {
   progress = animateProgress(message)
-  process.stdout.write(message)
+  print(message)
 
   return (error) => {
     if (error) {
-      process.stderr.write(error)
+      printError(error)
     }
     clearTimeout(progress)
     return addCheckmark(() => newLine())
@@ -71,7 +73,7 @@ for (const locale of locales) {
     }
   } catch (error) {
     if (error.code !== 'ENOENT') {
-      process.stderr.write(
+      printError(
         `There was an error loading this translation file: ${translationFileName}
         \n${error}`
       )
@@ -111,7 +113,7 @@ const extractFromFile = async (fileName) => {
       }
     }
   } catch (error) {
-    process.stderr.write(`Error transforming file: ${fileName}\n${error}`)
+    printError(`Error transforming file: ${fileName}\n${error}`)
   }
 }
 

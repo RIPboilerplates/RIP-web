@@ -3,6 +3,7 @@
  */
 const fs = require('fs')
 const exec = require('child_process').exec
+const print = require('../../scripts/helpers/print')
 
 function languageIsSupported(language) {
   try {
@@ -80,7 +81,7 @@ module.exports = {
           if (err || stderr) {
             throw err || stderr
           }
-          process.stdout.write(result)
+          print(result)
         })
         return 'modify translation messages'
       }

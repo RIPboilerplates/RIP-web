@@ -1,5 +1,6 @@
 ## TODO v1
 * generator for adding new constants to redux
+* update packages to latest versions
 
 ## maybe
 * move `process` calls to config
