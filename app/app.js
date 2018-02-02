@@ -45,6 +45,9 @@ import configureStore from 'store'
 // Import i18n messages
 import { translationMessages } from 'I18n'
 
+// Import config
+import Config from 'config/debug'
+
 // Create redux store with history
 const initialState = {}
 const history = createHistory()
@@ -93,6 +96,6 @@ if (!window.Intl) {
 // Install ServiceWorker and AppCache in the end since
 // it's not most important operation and if main code fails,
 // we do not want it installed
-if (process.env.NODE_ENV === 'production') {
+if (Config.isProd) {
   require('offline-plugin/runtime').install() // eslint-disable-line global-require
 }

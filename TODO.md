@@ -3,8 +3,6 @@
 * update packages to latest versions
 
 ## maybe
-* move `process` calls to config
-* move `process.stdout.write` into function
 * update `manifest.json`
 
 ## v2
