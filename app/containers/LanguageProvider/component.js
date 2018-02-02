@@ -1,16 +1,13 @@
-/*
- *
- * LanguageProvider
- *
- * this component connects the redux state language locale to the
- * IntlProvider component and i18n messages (loaded from `app/translations`)
- */
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import { IntlProvider } from 'react-intl'
 
-
+/**
+ * LanguageProvider
+ *
+ * This component connects the redux state language locale to the
+ * IntlProvider component and i18n messages (loaded from `app/translations`)
+ */
 export default class LanguageProvider extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
@@ -22,7 +19,10 @@ export default class LanguageProvider extends React.PureComponent { // eslint-di
 }
 
 LanguageProvider.propTypes = {
+  /** Locale of the language, 2 characters, defaults to 'en' */
   locale:   PropTypes.string,
+  /** Internationalized messages */
   messages: PropTypes.object,
+  /** The content of the LanguageProvider */
   children: PropTypes.element.isRequired,
 }

@@ -12,6 +12,7 @@
   "scripts": {
     "open:app": "open http://localhost:3000",
     "open:coverage": "open coverage/lcov-report/index.html",
+    "open:docs": "open http://localhost:6060",
     "analyze:clean": "rimraf stats.json",
     "preanalyze": "npm run analyze:clean",
     "analyze": "node ./internals/scripts/analyze.js",
@@ -42,7 +43,9 @@
     "test:clean": "rimraf ./coverage",
     "test": "cross-env NODE_ENV=test jest --coverage",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "start:docs": "styleguidist server",
+    "build:docs": "styleguidist build"
   },
   "lint-staged": {
     "*.js": "lint:eslint"
@@ -314,6 +317,7 @@
     "offline-plugin": "4.8.1",
     "plop": "^1.9.1",
     "pre-commit": "1.2.2",
+    "react-styleguidist": "^6.2.2",
     "react-test-renderer": "15.6.1",
     "reactotron-react-js": "^1.13.0",
     "reactotron-redux": "^1.13.0",
