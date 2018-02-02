@@ -1,5 +1,4 @@
 ## TODO v1
-* documentation - remove esdoc, storybook, add `react-styleguidist.js.org`
 * generator for adding new constants to redux
 * remove current loadable containers, comment it out of generators
 

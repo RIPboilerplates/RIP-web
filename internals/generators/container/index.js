@@ -46,6 +46,8 @@ module.exports = {
     message: 'Do you want an selector for this container (i.e. will the redux state be large/complex)?',
   }],
   actions: (data) => {
+    data.directory = 'container' // eslint-disable-line no-param-reassign
+
     const actions = [{
       type:         'add',
       path:         '../../app/containers/{{properCase name}}/index.js',
@@ -54,7 +56,7 @@ module.exports = {
     }, {
       type:         'add',
       path:         '../../app/containers/{{properCase name}}/styles.js',
-      templateFile: './container/styles.js.hbs',
+      templateFile: './shared/styles.js.hbs',
       abortOnFail:  true,
     }, {
       type:         'add',
@@ -65,6 +67,11 @@ module.exports = {
       type:         'add',
       path:         '../../app/containers/{{properCase name}}/tests/component.test.js',
       templateFile: './container/component.test.js.hbs',
+      abortOnFail:  true,
+    }, {
+      type:         'add',
+      path:         '../../app/components/{{properCase name}}/examples.md',
+      templateFile: './shared/examples.md.hbs',
       abortOnFail:  true,
     }, {
       type:         'modify',
@@ -95,7 +102,7 @@ module.exports = {
       actions.push({
         type:         'add',
         path:         '../../app/containers/{{properCase name}}/messages.js',
-        templateFile: './container/messages.js.hbs',
+        templateFile: './shared/messages.js.hbs',
         abortOnFail:  true,
       })
     }

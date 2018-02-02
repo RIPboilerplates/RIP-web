@@ -40,6 +40,8 @@ module.exports = {
     message: 'Do you want to load the component asynchronously (i.e. action needed to display this)?',
   }],
   actions: (data) => {
+    data.directory = 'component' // eslint-disable-line no-param-reassign
+
     // Generate index.js and index.test.js
     let componentTemplate
     let indexTemplate
@@ -79,12 +81,17 @@ module.exports = {
     }, {
       type:         'add',
       path:         '../../app/components/{{properCase name}}/tests/component.test.js',
-      templateFile: './component/component.test.js.hbs',
+      templateFile: './shared/component.test.js.hbs',
       abortOnFail:  true,
     }, {
       type:         'add',
       path:         '../../app/components/{{properCase name}}/styles.js',
-      templateFile: './component/styles.js.hbs',
+      templateFile: './shared/styles.js.hbs',
+      abortOnFail:  true,
+    }, {
+      type:         'add',
+      path:         '../../app/components/{{properCase name}}/examples.md',
+      templateFile: './shared/examples.md.hbs',
       abortOnFail:  true,
     }, {
       type:         'modify',
@@ -98,7 +105,7 @@ module.exports = {
       actions.push({
         type:         'add',
         path:         '../../app/components/{{properCase name}}/messages.js',
-        templateFile: './component/messages.js.hbs',
+        templateFile: './shared/messages.js.hbs',
         abortOnFail:  true,
       })
     }
