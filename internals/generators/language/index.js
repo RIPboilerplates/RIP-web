@@ -1,6 +1,3 @@
-/**
- * Language Generator
- */
 const fs = require('fs')
 const exec = require('child_process').exec
 const print = require('../../scripts/helpers/print')
@@ -14,6 +11,9 @@ function languageIsSupported(language) {
   }
 }
 
+/**
+ * Language Generator
+ */
 module.exports = {
   description: 'Add a language',
   prompts:     [{

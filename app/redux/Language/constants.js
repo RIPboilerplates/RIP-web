@@ -1,9 +1,6 @@
-/*
- *
- * Language Provider constants
- *
+/**
+ * Language constants
  */
-
 /* eslint-disable no-multi-spaces */
 const PREFIX               = 'LANGUAGE_PROVIDER'
 export const CHANGE_LOCALE = `${PREFIX}/CHANGE_LOCALE`

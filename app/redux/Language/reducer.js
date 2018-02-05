@@ -1,9 +1,3 @@
-/*
- *
- * LanguageProvider reducer
- *
- */
-
 import { fromJS } from 'immutable'
 
 import {
@@ -18,6 +12,9 @@ const initialState = fromJS({
   locale: DEFAULT_LOCALE,
 })
 
+/**
+ * LanguageProvider reducer
+ */
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case CHANGE_LOCALE:

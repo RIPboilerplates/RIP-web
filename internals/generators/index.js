@@ -1,20 +1,21 @@
-/**
- * generator/index.js
- *
- * Exports the generators so plop knows them
- */
-
 const fs = require('fs')
 const path = require('path')
 const componentGenerator = require('./component/index.js')
 const containerGenerator = require('./container/index.js')
 const languageGenerator = require('./language/index.js')
 const reduxGenerator = require('./redux/index.js')
+const constantsGenerator = require('./reduxConstant/index.js')
 
+/**
+ * generator/index.js
+ *
+ * Exports the generators so plop knows them
+ */
 module.exports = (plop) => {
   plop.setGenerator('component', componentGenerator)
   plop.setGenerator('container', containerGenerator)
   plop.setGenerator('redux', reduxGenerator)
+  plop.setGenerator('redux constant', constantsGenerator)
   plop.setGenerator('language', languageGenerator)
   plop.addHelper('directory', (comp) => {
     try {

@@ -1,9 +1,8 @@
+const reduxExists = require('../utils/reduxExists')
+
 /**
  * Redux Generator
  */
-
-const reduxExists = require('../utils/reduxExists')
-
 module.exports = {
   description: 'Add a redux container',
   prompts:     [{

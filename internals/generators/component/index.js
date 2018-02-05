@@ -1,13 +1,12 @@
-/**
- * Component Generator
- */
-
 /* eslint strict: ["off"] */
 
 'use strict'
 
 const componentExists = require('../utils/componentExists')
 
+/**
+ * Component Generator
+ */
 module.exports = {
   description: 'Add an unconnected component',
   prompts:     [{

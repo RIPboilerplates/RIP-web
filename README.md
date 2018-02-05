@@ -106,3 +106,8 @@ Now you're ready to rumble!
 - [Your app](docs/js): Supercharging your app with Routing, Redux, simple
   asynchronicity helpers, etc.
 - [**Troubleshooting**](docs/general/gotchas.md): Solutions to common problems faced by developers.
+
+## TODO
+ - [ ] verify if thunks need injector like thunks did
+ - [ ] move generators to separate package
+ - [ ] update `manifest.json` file

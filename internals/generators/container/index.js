@@ -1,9 +1,8 @@
+const componentExists = require('../utils/componentExists')
+
 /**
  * Container Generator
  */
-
-const componentExists = require('../utils/componentExists')
-
 module.exports = {
   description: 'Add a container component',
   prompts:     [{

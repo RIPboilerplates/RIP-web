@@ -3,6 +3,10 @@ import {
   LOCATION_CHANGE,
 } from './constants'
 
+const initialState = fromJS({
+  location: null,
+})
+
 /*
  * routeReducer
  *
@@ -10,10 +14,6 @@ import {
  * The change is necessitated by moving to react-router-redux@4
  *
  */
-const initialState = fromJS({
-  location: null,
-})
-
 /**
  * Merge route into the global application state
  */
