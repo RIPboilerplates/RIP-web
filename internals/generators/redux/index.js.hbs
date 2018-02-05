@@ -1,9 +1,3 @@
-/*
- *
- * {{ properCase name }} actions
- *
- */
-
 import {
   {{ constantCase actionName }},
 } from './constants'
@@ -12,7 +6,12 @@ import {
   {{ camelCase actionName }}Thunk,
 } from './thunks'
 
-export const {{ camelCase actionName }} = () => ({
-  type:    {{ constantCase actionName }},
-  payload: {{ camelCase actionName }}Thunk(),
-})
+/**
+ * {{ properCase name }} Action to perform {{ titleCase actionName }}
+ */
+export const {{ camelCase actionName }} = () => (
+  { // (dispatch, getState) => ({
+    type:    {{ constantCase actionName }},
+    payload: {{ camelCase actionName }}Thunk(),
+  } // )
+)
