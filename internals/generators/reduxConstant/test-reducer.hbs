@@ -1,0 +1,29 @@
+
+  it('returns state for {{ constantCase actionName }}_PENDING', () => {
+    result = {
+      fetching: true,
+      fetched:  false,
+      error:    null,
+    }
+    expect(reducer(undefined, { type: {{ constantCase actionName }}_PENDING }).toJS()).toEqual(result)
+  })
+
+  it('returns state for {{ constantCase actionName }}_FULFILLED', () => {
+    result = {
+      fetching: false,
+      fetched:  true,
+      error:    null,
+    }
+    expect(reducer(undefined, { type: {{ constantCase actionName }}_FULFILLED }).toJS()).toEqual(result)
+  })
+
+  it('returns state for {{ constantCase actionName }}_REJECTED', () => {
+    const error = 'error'
+    result = {
+      fetching: false,
+      fetched:  true,
+      error,
+    }
+    expect(reducer(undefined, { type: {{ constantCase actionName }}_REJECTED, payload: error }).toJS()).toEqual(result)
+  })
+})

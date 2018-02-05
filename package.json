@@ -223,7 +223,7 @@
       "!app/app.js",
       "!app/global-styles.js",
       "!app/components/index.js",
-      "!app/*/*/index.{js,jsx}",
+      "!app/{components,containers}/*/index.{js,jsx}",
       "!app/*/*/constants.{js,jsx}",
       "!app/config/*.{js,jsx}",
       "!app/themes/*.{js,jsx}"
@@ -300,6 +300,7 @@
     "babel-preset-react": "6.24.1",
     "babel-preset-stage-0": "6.24.1",
     "circular-dependency-plugin": "4.4.0",
+    "constant-case": "^2.0.0",
     "coveralls": "3.0.0",
     "css-loader": "0.28.9",
     "enzyme": "3.3.0",

@@ -44,7 +44,6 @@ module.exports = {
     type:         'modify',
     path:         '../../app/redux/{{properCase name}}/index.js',
     pattern:      /(}\sfrom\s'.\/thunks'\n)(?!}\sfrom\s'.\/thunks')/,
-    // pattern:      /(from\s'.\/translations\/[a-z]+.json'\n)(?!.*from\s'.\/translations\/[a-z]+.json')/g,
     templateFile: './reduxConstant/import-thunk.hbs',
   }, {
     type:         'modify',
@@ -66,5 +65,40 @@ module.exports = {
     path:         '../../app/redux/{{properCase name}}/thunks.js',
     pattern:      /([\s\S]*)/,
     templateFile: './reduxConstant/thunk.hbs',
+  }, {
+    type:         'modify',
+    path:         '../../app/redux/{{properCase name}}/tests/index.test.js',
+    pattern:      /(}\sfrom\s'..\/'\n)(?!}\sfrom\s'..\/')/,
+    templateFile: './reduxConstant/import-action.hbs',
+  }, {
+    type:         'modify',
+    path:         '../../app/redux/{{properCase name}}/tests/index.test.js',
+    pattern:      /(}\sfrom\s'..\/constants'\n)(?!}\sfrom\s'..\/constants')/,
+    templateFile: './reduxConstant/import-constant.hbs',
+  }, {
+    type:         'modify',
+    path:         '../../app/redux/{{properCase name}}/tests/index.test.js',
+    pattern:      /(^}\)$)/gm,
+    templateFile: './reduxConstant/test-action.hbs',
+  }, {
+    type:         'modify',
+    path:         '../../app/redux/{{properCase name}}/tests/reducer.test.js',
+    pattern:      /([ \t]+INITIAL_STATE,\n)(?![ \t]+INITIAL_STATE,)/,
+    templateFile: './reduxConstant/import-constants.hbs',
+  }, {
+    type:         'modify',
+    path:         '../../app/redux/{{properCase name}}/tests/reducer.test.js',
+    pattern:      /(^}\)$)/gm,
+    templateFile: './reduxConstant/test-reducer.hbs',
+  }, {
+    type:         'modify',
+    path:         '../../app/redux/{{properCase name}}/tests/thunks.test.js',
+    pattern:      /(}\sfrom\s'..\/thunks'\n)(?!}\sfrom\s'..\/thunks')/,
+    templateFile: './reduxConstant/import-thunk.hbs',
+  }, {
+    type:         'modify',
+    path:         '../../app/redux/{{properCase name}}/tests/thunks.test.js',
+    pattern:      /(^}\)$)/gm,
+    templateFile: './reduxConstant/test-thunk.hbs',
   }],
 }
