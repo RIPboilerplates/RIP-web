@@ -1,0 +1,9 @@
+$1
+/**
+ * {{ properCase name }} to perform async {{ titleCase actionName }}
+ */
+export const {{ camelCase actionName }}Thunk = () => (
+  new Promise((resolve) => {
+    setTimeout(() => resolve('YAY!!'), 500)
+  })
+)

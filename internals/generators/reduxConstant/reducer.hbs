@@ -1,0 +1,16 @@
+    case {{ constantCase actionName }}_PENDING:
+      return state
+        .set('fetching', true)
+        .set('fetched', false)
+        .set('error', null)
+    case {{ constantCase actionName }}_FULFILLED:
+      return state
+        .set('fetching', false)
+        .set('fetched', true)
+        .set('error', null)
+    case {{ constantCase actionName }}_REJECTED:
+      return state
+        .set('fetching', false)
+        .set('fetched', true)
+        .set('error', action.payload)
+$1
