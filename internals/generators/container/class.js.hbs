@@ -12,7 +12,15 @@ import Styled from './styles'
 /**
 * {{ properCase name }} Component Description
 */
-export class {{ properCase name }} extends {{{ type }}} { // eslint-disable-line react/prefer-stateless-function
+export class {{ properCase name }} extends {{{ type }}} {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+
+    }
+  }
+
   render() {
     return (
       <Styled.Container>

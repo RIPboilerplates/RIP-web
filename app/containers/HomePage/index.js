@@ -1,9 +1,5 @@
 /**
- * Asynchronously loads the component for HomePage
+ * Exports the component for HomePage
  */
-import Loadable from 'react-loadable'
-
-export default Loadable({
-  loader:  () => import('./component'),
-  loading: () => null,
-})
+import HomePage from './component'
+export default HomePage

@@ -8,7 +8,7 @@ import { IntlProvider } from 'react-intl'
  * This component connects the redux state language locale to the
  * IntlProvider component and i18n messages (loaded from `app/translations`)
  */
-export default class LanguageProvider extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export default class LanguageProvider extends React.PureComponent {
   render() {
     return (
       <IntlProvider locale={this.props.locale} key={this.props.locale} messages={this.props.messages[this.props.locale]}>

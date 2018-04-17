@@ -32,48 +32,18 @@ module.exports = {
     name:    'wantMessages',
     default: true,
     message: 'Do you want i18n messages (i.e. will this component use text)?',
-  // }, {
-  //   type:    'confirm',
-  //   name:    'wantLoadable',
-  //   default: false,
-  //   message: 'Do you want to load the component asynchronously (i.e. action needed to display this)?',
   }],
   actions: (data) => {
     data.directory = 'component' // eslint-disable-line no-param-reassign
 
-    // Temporarily removing loadable for simpler gsd
-    data.wantLoadable = false // eslint-disable-line no-param-reassign
-
     // Generate index.js and index.test.js
-    let componentTemplate
-    let indexTemplate
-
-    switch (data.type) {
-      case 'Stateless Function': {
-        componentTemplate = './component/stateless.js.hbs'
-        break
-      }
-      default: {
-        componentTemplate = './component/class.js.hbs'
-      }
-    }
-
-    // If want Loadable.js to load the component asynchronously
-    switch (data.wantLoadable) {
-      case true: {
-        indexTemplate = './component/loadable.js.hbs'
-        break
-      }
-      default: {
-        indexTemplate = './component/index.js.hbs'
-        break
-      }
-    }
+    const componentTemplate =
+      data.type === 'Stateless Function' ? './component/stateless.js.hbs' : './component/class.js.hbs'
 
     const actions = [{
       type:         'add',
       path:         '../../app/components/{{properCase name}}/index.js',
-      templateFile: indexTemplate,
+      templateFile: './component/index.js.hbs',
       abortOnFail:  true,
     }, {
       type:         'add',

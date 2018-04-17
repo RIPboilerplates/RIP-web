@@ -47,9 +47,6 @@ module.exports = {
   actions: (data) => {
     data.directory = 'container' // eslint-disable-line no-param-reassign
 
-    // Temporarily removing loadable for simpler gsd
-    data.wantLoadable = false // eslint-disable-line no-param-reassign
-
     const actions = [{
       type:         'add',
       path:         '../../app/containers/{{properCase name}}/index.js',
@@ -68,12 +65,22 @@ module.exports = {
     }, {
       type:         'add',
       path:         '../../app/containers/{{properCase name}}/tests/component.test.js',
-      templateFile: './container/component.test.js.hbs',
+      templateFile: './shared/component.test.js.hbs',
       abortOnFail:  true,
     }, {
       type:         'add',
-      path:         '../../app/components/{{properCase name}}/examples.md',
+      path:         '../../app/containers/{{properCase name}}/examples.md',
       templateFile: './shared/examples.md.hbs',
+      abortOnFail:  true,
+    }, {
+      type:         'add',
+      path:         '../../app/containers/{{properCase name}}/connect.js',
+      templateFile: './container/connect.js.hbs',
+      abortOnFail:  true,
+    }, {
+      type:         'add',
+      path:         '../../app/containers/{{properCase name}}/tests/connect.test.js',
+      templateFile: './container/connect.test.js.hbs',
       abortOnFail:  true,
     }, {
       type:         'modify',

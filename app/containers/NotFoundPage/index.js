@@ -1,9 +1,5 @@
 /**
- * Asynchronously loads the component for NotFoundPage
+ * Exports the component for NotFoundPage
  */
-import Loadable from 'react-loadable'
-
-export default Loadable({
-  loader:  () => import('./component'),
-  loading: () => null,
-})
+import NotFoundPage from './component'
+export default NotFoundPage

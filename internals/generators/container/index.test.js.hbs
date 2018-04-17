@@ -1,0 +1,22 @@
+import React from 'react'
+import renderer from 'utils/renderIntl'
+import mockStore from 'utils/mockStore'
+import Component from '../connect'
+
+describe('{{properCase name }} Component', () => {
+  let component
+  let store
+
+  beforeEach(() => {
+    component = null
+    store = mockStore()
+  })
+
+  describe('Snapshot Renders', () => {
+    it('default', () => {
+      component = renderer(<Component store={store} />)
+      const tree = component.toJSON()
+      expect(tree).toMatchSnapshot()
+    })
+  })
+})

@@ -1,19 +1,16 @@
 /**
- * {{properCase name }} Redux connected component and export
- */
+* {{properCase name }} Redux connected component
+*/
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 {{#if wantReselect}}
-import { createStructuredSelector } from 'reselect'
-{{/if}}
-{{#if wantLoadable}}
-import Loadable from 'react-loadable'
+  import { createStructuredSelector } from 'reselect'
 {{/if}}
 
 import Component from './component'
 {{#if wantReselect}}
-import makeSelect{{properCase name}} from './selectors'
+  import makeSelect{{properCase name}} from './selectors'
 {{/if}}
 
 {{#if wantReselect}}
@@ -33,14 +30,4 @@ const mapDispatchToProps = (dispatch) => (
   }, dispatch)
 )
 
-const {{ properCase name }} = connect(mapStateToProps, mapDispatchToProps)(Component)
-{{#if wantLoadable}}
-export {{ curly true }} {{ properCase name }} {{ curly }}
-
-export default Loadable({
-  loader:  () => Component,
-  loading: () => null,
-})
-{{else}}
-export default {{ properCase name }}
-{{/if}}
+export default connect(mapStateToProps, mapDispatchToProps)(Component)
