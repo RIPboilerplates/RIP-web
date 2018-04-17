@@ -219,16 +219,13 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "app/**/*.{js,jsx}",
-      "!app/**/*.test.{js,jsx}",
-      "!app/*/RbGenerated*/*.{js,jsx}",
+      "app/**/*.js",
+      "!app/**/*.test.js",
       "!app/app.js",
-      "!app/global-styles.js",
-      "!app/components/index.js",
-      "!app/{components,containers}/*/index.{js,jsx}",
-      "!app/*/*/constants.{js,jsx}",
-      "!app/config/*.{js,jsx}",
-      "!app/themes/*.{js,jsx}"
+      "!app/**/*/constants.js",
+      "!app/(config|themes)/*.js",
+      "!app/(components|containers)/index.js",
+      "!app/utils/history.js"
     ],
     "coverageThreshold": {
       "global": {
@@ -247,7 +244,10 @@
       ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/internals/mocks/image.js"
     },
     "setupTestFrameworkScriptFile": "<rootDir>/internals/testing/test-bundler.js",
-    "testRegex": "tests/.*\\.test\\.js$"
+    "testRegex": "tests/.*\\.test\\.js$",
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
   "dependencies": {
     "babel-polyfill": "6.26.0",
@@ -307,6 +307,7 @@
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
     "enzyme-react-intl": "^2.0.0",
+    "enzyme-to-json": "^3.3.3",
     "eslint": "4.16.0",
     "eslint-config-airbnb": "16.1.0",
     "eslint-config-airbnb-base": "12.1.0",

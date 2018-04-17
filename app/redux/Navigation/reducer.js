@@ -1,11 +1,10 @@
 import { fromJS } from 'immutable'
 import {
+  INITIAL_STATE,
   LOCATION_CHANGE,
 } from './constants'
 
-const initialState = fromJS({
-  location: null,
-})
+const initialState = fromJS(INITIAL_STATE)
 
 /*
  * routeReducer

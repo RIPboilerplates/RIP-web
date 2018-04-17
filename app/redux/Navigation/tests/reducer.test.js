@@ -1,21 +1,30 @@
+import { fromJS } from 'immutable'
 import { reducer } from '../reducer'
 import {
+  INITIAL_STATE,
   LOCATION_CHANGE,
 } from '../constants'
 
+let result
+let initialState
+beforeEach(() => {
+  initialState = { ...INITIAL_STATE }
+  result = { ...INITIAL_STATE }
+})
+
 describe('navigation reducer', () => {
   it('returns the initial state', () => {
-    expect(reducer(undefined, {}).toJS())
-      .toEqual({
-        location: null,
-      })
+    expect(reducer(undefined, {}).toJS()).toEqual(result)
   })
 
-  it('changes the location', () => {
-    const location = 'test-location'
-    expect(reducer(undefined, { type: LOCATION_CHANGE, payload: location }).toJS())
-      .toEqual({
-        location,
-      })
+  it('returns state for LOCATION_CHANGE', () => {
+    const payload = 'test-location'
+    result.location = payload
+
+    const store = reducer(
+      fromJS(initialState),
+      { type: LOCATION_CHANGE, payload }
+    )
+    expect(store.toJS()).toEqual(result)
   })
 })

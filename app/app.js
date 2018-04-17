@@ -12,11 +12,10 @@ import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import { ConnectedRouter } from 'react-router-redux'
 import 'sanitize.css/sanitize.css'
 
 // Import root app
-import App from 'containers/App'
+import Navigation from 'navigation'
 
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider'
@@ -60,9 +59,7 @@ const render = (messages) => {
   ReactDOM.render(
     <Provider store={store}>
       <LanguageProvider messages={messages}>
-        <ConnectedRouter history={history}>
-          <App />
-        </ConnectedRouter>
+        <Navigation history={history} />
       </LanguageProvider>
     </Provider>,
     MOUNT_NODE
@@ -73,7 +70,7 @@ if (module.hot) {
   // Hot reloadable React components and translation json files
   // modules.hot.accept does not accept dynamic dependencies,
   // have to be constants at compile-time
-  module.hot.accept(['I18n', 'containers/App'], () => {
+  module.hot.accept(['I18n', 'navigation'], () => {
     ReactDOM.unmountComponentAtNode(MOUNT_NODE)
     render(translationMessages)
   })
