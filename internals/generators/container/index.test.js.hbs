@@ -14,9 +14,8 @@ describe('{{properCase name }} Component', () => {
 
   describe('Snapshot Renders', () => {
     it('default', () => {
-      component = renderer(<Component store={store} />)
-      const tree = component.toJSON()
-      expect(tree).toMatchSnapshot()
+      component = renderer(<Component store={store} />).toJSON()
+      expect(component).toMatchSnapshot()
     })
   })
 })

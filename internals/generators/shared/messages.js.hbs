@@ -6,8 +6,16 @@ import { defineMessages } from 'react-intl'
  * This contains all the text for the {{ properCase name }} component.
  */
 export default defineMessages({
+  {{#if wantMessages}}{{#if wantHeaders}}pageTitle: {
+    id:             'app.{{{ lowerCase directory }}}s.{{{ properCase name }}}.pageTitle',
+    defaultMessage: 'LoginPage',
+  },
+  pageDescription: {
+    id:             'app.{{{ lowerCase directory }}}s.{{{ properCase name }}}.pageDescription',
+    defaultMessage: 'Description of LoginPage',
+  },{{/if}}{{/if}}
   header: {
     id:             'app.{{ lowerCase directory }}s.{{ properCase name }}.header',
-    defaultMessage: 'This is the {{ properCase name}} {{ lowerCase directory }} !',
+    defaultMessage: 'This is the {{ properCase name}} {{ lowerCase directory }}!',
   },
 })

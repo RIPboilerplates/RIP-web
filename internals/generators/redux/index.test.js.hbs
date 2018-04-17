@@ -6,10 +6,24 @@ import {
   {{ constantCase actionName }},
 } from '../constants'
 
+let dispatch
+let result
+
+beforeEach(() => {
+  dispatch = jest.fn()
+  result = null
+})
+
 describe('{{ properCase name }} actions', () => {
   describe('{{ camelCase actionName }}', () => {
-    it('has a type of {{ constantCase actionName }}', () => {
-      expect({{ camelCase actionName }}().type).toEqual({{ constantCase actionName }})
+    it('dispatches correctly', () => {
+      {{ camelCase actionName }}()(dispatch)
+
+      result = {
+        type: {{ constantCase actionName }},
+        payload: 'YAY!!',
+      }
+      expect(dispatch).toHaveBeenCalledWith(result)
     })
   })
 })

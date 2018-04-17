@@ -15,9 +15,8 @@ beforeEach(() => {
 describe('{{ properCase name }} Component', () => {
   describe('Snapshot Renders', () => {
     it('default', () => {
-      component = renderer(<Component {...props} />)
-      const tree = component.toJSON()
-      expect(tree).toMatchSnapshot()
+      component = renderer(<Component {...props} />).toJSON()
+      expect(component).toMatchSnapshot()
     })
   })
 })

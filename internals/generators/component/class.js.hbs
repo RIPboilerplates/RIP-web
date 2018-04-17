@@ -25,6 +25,8 @@ class {{ properCase name }} extends {{{ type }}} {
       <Styled.Container>
       {{#if wantMessages}}
         <FormattedMessage {...messages.header} />
+      {{else}}
+        This is the {{ properCase name}} {{ lowerCase directory }}!
       {{/if}}
       </Styled.Container>
     )

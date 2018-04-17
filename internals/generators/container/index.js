@@ -26,22 +26,17 @@ module.exports = {
   }, {
     type:    'confirm',
     name:    'wantHeaders',
-    default: false,
+    default: true,
     message: 'Do you want headers (i.e. is this a page container)?',
   }, {
     type:    'confirm',
     name:    'wantMessages',
     default: true,
     message: 'Do you want i18n messages (i.e. will this component use text)?',
-  // }, {
-  //   type:    'confirm',
-  //   name:    'wantLoadable',
-  //   default: true,
-  //   message: 'Do you want to load resources asynchronously?',
   }, {
     type:    'confirm',
     name:    'wantReselect',
-    default: true,
+    default: false,
     message: 'Do you want an selector for this container (i.e. will the redux state be large/complex)?',
   }],
   actions: (data) => {
@@ -71,16 +66,6 @@ module.exports = {
       type:         'add',
       path:         '../../app/containers/{{properCase name}}/examples.md',
       templateFile: './shared/examples.md.hbs',
-      abortOnFail:  true,
-    }, {
-      type:         'add',
-      path:         '../../app/containers/{{properCase name}}/connect.js',
-      templateFile: './container/connect.js.hbs',
-      abortOnFail:  true,
-    }, {
-      type:         'add',
-      path:         '../../app/containers/{{properCase name}}/tests/connect.test.js',
-      templateFile: './container/connect.test.js.hbs',
       abortOnFail:  true,
     }, {
       type:         'modify',

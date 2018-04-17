@@ -9,9 +9,8 @@ import {
 /**
  * {{ properCase name }} Action to perform {{ titleCase actionName }}
  */
-export const {{ camelCase actionName }} = () => (
-  { // (dispatch, getState) => ({
+export const {{ camelCase actionName }} = () => (dispatch) =>
+  dispatch({
     type:    {{ constantCase actionName }},
     payload: {{ camelCase actionName }}Thunk(),
-  } // )
-)
+  })

@@ -1,3 +1,4 @@
+import { fromJS } from 'immutable'
 import { reducer } from '../reducer'
 
 import {
@@ -9,39 +10,51 @@ import {
 
 describe('{{ camelCase name }} reducer', () => {
   let result
+  let initialState
+  let store
+  let payload
   beforeEach(() => {
-    result = null
+    payload = null
+    store = null
+    initialState = { ...INITIAL_STATE }
+    result = { ...INITIAL_STATE }
   })
+
+  const setFetching = () => {
+    result.fetching = true
+    result.fetched = false
+  }
+
+  const setFetching = () => {
+    result.fetching = false
+    result.fetched = true
+  }
 
   it('returns the initial state', () => {
     expect(reducer(undefined, {}).toJS()).toEqual(INITIAL_STATE)
   })
 
   it('returns state for {{ constantCase actionName }}_PENDING', () => {
-    result = {
-      fetching: true,
-      fetched:  false,
-      error:    null,
-    }
-    expect(reducer(undefined, { type: {{ constantCase actionName }}_PENDING }).toJS()).toEqual(result)
+    setFetching()
+
+    store = reducer(fromJS(initialState), { type: {{ constantCase actionName }}_PENDING })
+    expect(store.toJS()).toEqual(result)
   })
 
   it('returns state for {{ constantCase actionName }}_FULFILLED', () => {
-    result = {
-      fetching: false,
-      fetched:  true,
-      error:    null,
-    }
-    expect(reducer(undefined, { type: {{ constantCase actionName }}_FULFILLED }).toJS()).toEqual(result)
+    setFetched()
+
+    store = reducer(fromJS(initialState), { type: {{ constantCase actionName }}_FULFILLED })
+    expect(store.toJS()).toEqual(result)
   })
 
   it('returns state for {{ constantCase actionName }}_REJECTED', () => {
     const error = 'error'
-    result = {
-      fetching: false,
-      fetched:  true,
-      error,
-    }
-    expect(reducer(undefined, { type: {{ constantCase actionName }}_REJECTED, payload: error }).toJS()).toEqual(result)
+    payload = { error }
+
+    setFetched()
+
+    store = reducer(fromJS(initialState), { type: {{ constantCase actionName }}_REJECTED, payload })
+    expect(store.toJS()).toEqual(result)
   })
 })

@@ -5,8 +5,9 @@ import {
 describe('{{ properCase name }} thunks', () => {
   describe('{{ camelCase actionName }}Thunk', () => {
     it('resolves asynchronously', async () => {
-      const response = await {{ camelCase actionName }}Thunk()
-      expect(response).toEqual('YAY!!')
+      expect.assertions(1)
+      await {{ camelCase actionName }}Thunk().resolves
+        .toEqual('YAY!!')
     })
   })
 })

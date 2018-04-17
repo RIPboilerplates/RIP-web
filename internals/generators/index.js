@@ -27,4 +27,31 @@ module.exports = (plop) => {
   })
   plop.addHelper('curly', (object, open) => (open ? '{' : '}'))
   plop.setHelper('isEquals', (arg1, arg2, options) => (arg1 === arg2) ? options.fn(this) : options.inverse(this))
+  plop.setHelper('ifCond', (v1, operator, v2, options) => {
+    switch (operator) {
+      /* eslint eqeqeq:0 */
+      case '==':
+        return (v1 == v2) ? options.fn(this) : options.inverse(this)
+      case '===':
+        return (v1 === v2) ? options.fn(this) : options.inverse(this)
+      case '!=':
+        return (v1 != v2) ? options.fn(this) : options.inverse(this)
+      case '!==':
+        return (v1 !== v2) ? options.fn(this) : options.inverse(this)
+      case '<':
+        return (v1 < v2) ? options.fn(this) : options.inverse(this)
+      case '<=':
+        return (v1 <= v2) ? options.fn(this) : options.inverse(this)
+      case '>':
+        return (v1 > v2) ? options.fn(this) : options.inverse(this)
+      case '>=':
+        return (v1 >= v2) ? options.fn(this) : options.inverse(this)
+      case '&&':
+        return (v1 && v2) ? options.fn(this) : options.inverse(this)
+      case '||':
+        return (v1 || v2) ? options.fn(this) : options.inverse(this)
+      default:
+        return options.inverse(this)
+    }
+  })
 }

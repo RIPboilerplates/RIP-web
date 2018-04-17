@@ -6,6 +6,9 @@ import { Helmet } from 'react-helmet'
 {{#if wantMessages}}
 import { FormattedMessage } from 'react-intl'
 import messages from './messages'
+  {{#if wantHeaders}}
+import { injectIntl, intlShape } from 'react-intl'
+  {{/if}}
 {{/if}}
 import Styled from './styles'
 
@@ -22,16 +25,28 @@ export class {{ properCase name }} extends {{{ type }}} {
   }
 
   render() {
+    {{#ifCond wantMessages '&&' wantHeaders}}
+    const { intl } = this.props
+
+    {{/ifCond}}
     return (
       <Styled.Container>
       {{#if wantHeaders}}
         <Helmet>
-          <title>{{properCase name}}</title>
-          <meta name="description" content="Description of {{properCase name}}" />
+          {{#ifCond wantMessages '&&' wantHeaders}}
+            <title>{intl.formatMessage(messages.pageTitle)}</title>
+            <meta name={'description'} content={intl.formatMessage(messages.pageDescription)} />
+          {{else}}
+            <title>{{properCase name}}</title>
+            <meta name={'description'} content='Description of {{properCase name}}' />
+          {{/ifCond}}
+
         </Helmet>
       {{/if}}
       {{#if wantMessages}}
         <FormattedMessage {...messages.header} />
+      {{else}}
+        This is the {{ properCase name}} {{ lowerCase directory }}!
       {{/if}}
       </Styled.Container>
     )
@@ -39,7 +54,15 @@ export class {{ properCase name }} extends {{{ type }}} {
 }
 
 {{ properCase name }}.propTypes = {
+{{#ifCond wantMessages '&&' wantHeaders}}
+  intl: intlShape.isRequired,
+{{else}}
   // prop types
+{{/ifCond}}
 }
 
+{{#ifCond wantMessages '&&' wantHeaders}}
+export default injectIntl({{ properCase name }})
+{{else}}
 export default {{ properCase name }}
+{{/ifCond}}
