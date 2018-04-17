@@ -1,14 +1,14 @@
 /**
- * Test Intl renderer
+ * StyleguidistWrapper renderer
  */
 import React from 'react'
 import { shallow } from 'enzyme'
 import { IntlProvider } from 'react-intl'
-import Wrapper from '../wrapperIntl'
+import Wrapper from '../styleguidistWrapper'
 
 const inner = <div>text</div>
 
-describe('wrapperIntl', () => {
+describe('styleguidistWrapper', () => {
   it('renders children', () => {
     const component = shallow(<Wrapper>{inner}</Wrapper>)
     expect(component.contains(

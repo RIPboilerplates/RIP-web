@@ -13,7 +13,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
-import createHistory from 'history/createBrowserHistory'
 import 'sanitize.css/sanitize.css'
 
 // Import root app
@@ -48,9 +47,12 @@ import { translationMessages } from 'I18n'
 // Import config
 import Config from 'config/debug'
 
+// Import browser history
+import history from 'utils/history'
+
 // Create redux store with history
 const initialState = {}
-const history = createHistory()
+
 const store = configureStore(initialState, history)
 const MOUNT_NODE = document.getElementById('app')
 

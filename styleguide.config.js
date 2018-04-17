@@ -1,10 +1,10 @@
 const path = require('path')
-const { version } = require('./package.json')
+const { version, name } = require('./package.json')
 const webpackConfig = require('./internals/webpack/webpack.dev.babel')
 
 /* eslint-disable key-spacing */
 module.exports = {
-  title: `Tela React Boilerplate\nStyleguidist | ${version}`,
+  title: `${name}\n${version}\nStyle guide`,
   webpackConfig,
   sections: [
     {
@@ -17,7 +17,7 @@ module.exports = {
     },
   ],
   styleguideComponents: {
-    Wrapper: path.join(__dirname, './app/utils/wrapperIntl'),
+    Wrapper: path.join(__dirname, './app/utils/styleguidistWrapper'),
   },
   getExampleFilename(componentPath) {
     return componentPath.replace(/component\.js/, 'examples.md')

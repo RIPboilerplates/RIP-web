@@ -1,5 +1,5 @@
 import React from 'react'
-import renderer from 'utils/renderIntl'
+import renderer from 'utils/renderers'
 
 import Component from '../'
 
