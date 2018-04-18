@@ -13,11 +13,13 @@ import Styled from './styles'
 const {{ properCase name }} = () => { // eslint-disable-line arrow-body-style
   return (
     <Styled.Container>
-    {{#if wantMessages}}
-      <FormattedMessage {...messages.header} />
-    {{else}}
-      This is the {{ properCase name}} {{ lowerCase directory }}!
-    {{/if}}
+      <h1>
+        {{#if wantMessages}}
+        <FormattedMessage {...messages.header} />
+        {{else}}
+        This is the {{ properCase name}} {{ lowerCase directory }}!
+        {{/if}}
+      </h1>
     </Styled.Container>
   )
 }

@@ -31,33 +31,35 @@ class {{ properCase name }} extends {{{ type }}} {
     {{/if}}
     return (
       <Styled.Container>
-      {{#if wantHeaders}}
+        {{#if wantHeaders}}
         <Helmet>
-        {{#if wantHeadersAndMessages}}
+          {{#if wantHeadersAndMessages}}
           <title>{intl.formatMessage(messages.pageTitle)}</title>
           <meta name={'description'} content={intl.formatMessage(messages.pageDescription)} />
-        {{else}}
+          {{else}}
           <title>{{properCase name}}</title>
           <meta name={'description'} content='Description of {{properCase name}}' />
-        {{/if}}
+          {{/if}}
         </Helmet>
-      {{/if}}
-      {{#if wantMessages}}
-        <FormattedMessage {...messages.header} />
-      {{else}}
-        This is the {{ properCase name}} {{ lowerCase directory }}!
-      {{/if}}
+        {{/if}}
+        <h1>
+          {{#if wantMessages}}
+          <FormattedMessage {...messages.header} />
+          {{else}}
+          This is the {{ properCase name}} {{ lowerCase directory }}!
+          {{/if}}
+        </h1>
       </Styled.Container>
     )
   }
 }
 
 {{ properCase name }}.propTypes = {
-{{#if wantHeadersAndMessages}}
+  {{#if wantHeadersAndMessages}}
   intl: intlShape.isRequired,
-{{else}}
+  {{else}}
   // prop types
-{{/if}}
+  {{/if}}
 }
 
 export default {{#if wantHeadersAndMessages}}injectIntl({{ properCase name }}){{else}}{{ properCase name }}{{/if}}
