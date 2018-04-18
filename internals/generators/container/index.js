@@ -40,7 +40,10 @@ module.exports = {
     message: 'Do you want an selector for this container (i.e. will the redux state be large/complex)?',
   }],
   actions: (data) => {
-    data.directory = 'container' // eslint-disable-line no-param-reassign
+    /* eslint-disable no-param-reassign */
+    data.directory = 'container'
+    data.wantHeadersAndMessages = data.wantHeaders && data.wantMessages
+    /* eslint-enable no-param-reassign */
 
     const actions = [{
       type:         'add',

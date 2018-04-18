@@ -15,7 +15,7 @@ import Styled from './styles'
 /**
 * {{ properCase name }} Component Description
 */
-export class {{ properCase name }} extends {{{ type }}} {
+class {{ properCase name }} extends {{{ type }}} {
   constructor(props) {
     super(props)
 
@@ -25,22 +25,21 @@ export class {{ properCase name }} extends {{{ type }}} {
   }
 
   render() {
-    {{#ifCond wantMessages '&&' wantHeaders}}
+    {{#if wantHeadersAndMessages}}
     const { intl } = this.props
 
-    {{/ifCond}}
+    {{/if}}
     return (
       <Styled.Container>
       {{#if wantHeaders}}
         <Helmet>
-          {{#ifCond wantMessages '&&' wantHeaders}}
-            <title>{intl.formatMessage(messages.pageTitle)}</title>
-            <meta name={'description'} content={intl.formatMessage(messages.pageDescription)} />
-          {{else}}
-            <title>{{properCase name}}</title>
-            <meta name={'description'} content='Description of {{properCase name}}' />
-          {{/ifCond}}
-
+        {{#if wantHeadersAndMessages}}
+          <title>{intl.formatMessage(messages.pageTitle)}</title>
+          <meta name={'description'} content={intl.formatMessage(messages.pageDescription)} />
+        {{else}}
+          <title>{{properCase name}}</title>
+          <meta name={'description'} content='Description of {{properCase name}}' />
+        {{/if}}
         </Helmet>
       {{/if}}
       {{#if wantMessages}}
@@ -54,15 +53,11 @@ export class {{ properCase name }} extends {{{ type }}} {
 }
 
 {{ properCase name }}.propTypes = {
-{{#ifCond wantMessages '&&' wantHeaders}}
+{{#if wantHeadersAndMessages}}
   intl: intlShape.isRequired,
 {{else}}
   // prop types
-{{/ifCond}}
+{{/if}}
 }
 
-{{#ifCond wantMessages '&&' wantHeaders}}
-export default injectIntl({{ properCase name }})
-{{else}}
-export default {{ properCase name }}
-{{/ifCond}}
+export default {{#if wantHeadersAndMessages}}injectIntl({{ properCase name }}){{else}}{{ properCase name }}{{/if}}
