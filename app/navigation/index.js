@@ -1,7 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { Switch, Route } from 'react-router-dom'
-import { ConnectedRouter } from 'react-router-redux'
+
 import {
   HomePage,
   NotFoundPage,
@@ -9,17 +9,15 @@ import {
 
 import Routes from './constants'
 
-const RootNav = ({ history }) => (
-  <ConnectedRouter history={history}>
-    <Switch>
-      <Route exact path={Routes.home} component={HomePage} />
-      <Route component={NotFoundPage} />
-    </Switch>
-  </ConnectedRouter>
+const RootNav = () => (
+  <Switch>
+    <Route exact path={Routes.home} component={HomePage} />
+    <Route component={NotFoundPage} />
+  </Switch>
 )
 
 RootNav.propTypes = {
-  history: PropTypes.object.isRequired,
+  // RootNav props
 }
 
 export default RootNav

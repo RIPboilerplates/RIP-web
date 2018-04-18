@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFoundPage Component Renders default 1`] = `
+<h1>
+  <span>
+    This is NotFoundPage component!
+  </span>
+</h1>
+`;

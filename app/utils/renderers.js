@@ -25,13 +25,6 @@ export const renderWithRouter = (children, store = mockStore({})) =>
     </Provider>
   )
 
-export const mountWithStore = (children, store = mockStore({})) =>
-  mountWithIntl(
-    <Provider store={store}>
-      {children}
-    </Provider>
-  ).mount()
-
 export const shallow = (Component) => shallowWithIntl(Component).first().shallow()
 export const mount = (Component) => mountWithIntl(Component)
 

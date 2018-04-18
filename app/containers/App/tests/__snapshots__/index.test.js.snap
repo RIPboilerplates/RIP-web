@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Component Renders default 1`] = `
+<div
+  className="styles__Container-eZxbLb fCoiuO"
+>
+  <RootNav />
+</div>
+`;

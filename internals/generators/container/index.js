@@ -52,6 +52,11 @@ module.exports = {
       abortOnFail:  true,
     }, {
       type:         'add',
+      path:         '../../app/containers/{{properCase name}}/tests/index.js',
+      templateFile: './container/index.test.js.hbs',
+      abortOnFail:  true,
+    }, {
+      type:         'add',
       path:         '../../app/containers/{{properCase name}}/styles.js',
       templateFile: './shared/styles.js.hbs',
       abortOnFail:  true,
