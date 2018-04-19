@@ -113,3 +113,4 @@ Now you're ready to rumble!
  - [ ] redux generators options for sync
  - [ ] fix redux constant generator adding tests twice
  - [ ] add constants to mockStore helper on redux generate
+ - [ ] get reactotron working

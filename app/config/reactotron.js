@@ -4,7 +4,7 @@ import Config from './debug'
 
 if (Config.useReactotron) {
   Reactotron
-    .configure({ name: 'TelaClaims' }) // , host: '192.168.90.104' })
+    .configure()
     .use(reactotronRedux())
     .connect()
 
