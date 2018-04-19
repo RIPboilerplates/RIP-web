@@ -10,6 +10,10 @@ module.exports = {
     {
       name: 'Containers',
       components: 'app/containers/*/component.js',
+      ignore: [
+        '**/App/**',
+        '**/*Provider/**',
+      ],
     },
     {
       name: 'Components',

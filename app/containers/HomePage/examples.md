@@ -3,5 +3,5 @@
 Default example:
 
 ```js
-<HomePage />
+<HomePage signOutAction={() => {}} />
 ```
