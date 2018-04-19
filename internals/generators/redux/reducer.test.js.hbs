@@ -13,9 +13,12 @@ describe('{{ camelCase name }} reducer', () => {
   let initialState
   let store
   let payload
+  let error
+
   beforeEach(() => {
     payload = null
     store = null
+    error = 'error'
     initialState = { ...INITIAL_STATE }
     result = { ...INITIAL_STATE }
   })
@@ -25,7 +28,7 @@ describe('{{ camelCase name }} reducer', () => {
     result.fetched = false
   }
 
-  const setFetching = () => {
+  const setFetched = () => {
     result.fetching = false
     result.fetched = true
   }
@@ -49,10 +52,8 @@ describe('{{ camelCase name }} reducer', () => {
   })
 
   it('returns state for {{ constantCase actionName }}_REJECTED', () => {
-    const error = 'error'
-    payload = { error }
-
     setFetched()
+    payload = { error }
 
     store = reducer(fromJS(initialState), { type: {{ constantCase actionName }}_REJECTED, payload })
     expect(store.toJS()).toEqual(result)

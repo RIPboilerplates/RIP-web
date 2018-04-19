@@ -1,5 +1,5 @@
 import {
-  {{ camelCase actionName }},
+  {{ camelCase actionName }}Action,
 } from '../'
 
 import {
@@ -15,9 +15,9 @@ beforeEach(() => {
 })
 
 describe('{{ properCase name }} actions', () => {
-  describe('{{ camelCase actionName }}', () => {
+  describe('{{ camelCase actionName }}Action', () => {
     it('dispatches correctly', () => {
-      {{ camelCase actionName }}()(dispatch)
+      {{ camelCase actionName }}Action()(dispatch)
 
       result = {
         type: {{ constantCase actionName }},

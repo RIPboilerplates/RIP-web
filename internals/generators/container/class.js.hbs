@@ -4,11 +4,8 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 {{/if}}
 {{#if wantMessages}}
-import { FormattedMessage } from 'react-intl'
+import { FormattedMessage{{#if wantHeaders}}, injectIntl, intlShape{{/if}} } from 'react-intl'
 import messages from './messages'
-  {{#if wantHeaders}}
-import { injectIntl, intlShape } from 'react-intl'
-  {{/if}}
 {{/if}}
 import Styled from './styles'
 

@@ -1,7 +1,13 @@
 
-  describe('{{ camelCase actionName }}', () => {
-    it('has a type of {{ constantCase actionName }}', () => {
-      expect({{ camelCase actionName }}().type).toEqual({{ constantCase actionName }})
+  describe('{{ camelCase actionName }}Action', () => {
+    it('dispatches correctly', () => {
+      {{ camelCase actionName }}Action()(dispatch)
+
+      result = {
+        type: {{ constantCase actionName }},
+        payload: 'YAY!!',
+      }
+      expect(dispatch).toHaveBeenCalledWith(result)
     })
   })
 })

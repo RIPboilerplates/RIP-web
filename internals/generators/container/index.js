@@ -52,7 +52,7 @@ module.exports = {
       abortOnFail:  true,
     }, {
       type:         'add',
-      path:         '../../app/containers/{{properCase name}}/tests/index.js',
+      path:         '../../app/containers/{{properCase name}}/tests/index.test.js',
       templateFile: './container/index.test.js.hbs',
       abortOnFail:  true,
     }, {
