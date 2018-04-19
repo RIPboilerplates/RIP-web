@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginPage Component Snapshot Renders default 1`] = `
+<div
+  className="styles__Container-eZxbLb kKypSe"
+>
+  <button
+    onClick={[MockFunction]}
+  >
+    <h1>
+      <span>
+        LOGIN
+      </span>
+    </h1>
+  </button>
+</div>
+`;

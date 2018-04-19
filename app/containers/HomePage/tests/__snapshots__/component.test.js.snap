@@ -11,7 +11,7 @@ exports[`HomePage Component Snapshot Renders default 1`] = `
   </h1>
   <button
     className="styles__Container-eZxbLb fnNXbV"
-    onClick={[Function]}
+    onClick={[MockFunction]}
   >
     <span>
       Log Out Action!

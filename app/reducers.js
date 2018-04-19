@@ -10,6 +10,7 @@ import { combineReducers } from 'redux-immutable'
 /* eslint-disable global-require */
 export default function createReducer(injectedReducers) {
   return combineReducers({
+    auth:     require('redux/Auth/reducer').reducer,
     ...injectedReducers,
     nav:      require('redux/Navigation/reducer').reducer,
     language: require('redux/Language/reducer').reducer,

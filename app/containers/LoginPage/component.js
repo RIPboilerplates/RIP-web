@@ -1,16 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import { FormattedMessage, injectIntl, intlShape } from 'react-intl'
-
-import { Button } from 'components'
+import { injectIntl, intlShape, FormattedMessage } from 'react-intl'
 import messages from './messages'
 import Styled from './styles'
 
 /**
-* HomePage Component Description
+* LoginPage Component Description
 */
-class HomePage extends React.PureComponent {
+class LoginPage extends React.PureComponent {
   constructor(props) {
     super(props)
 
@@ -20,7 +18,7 @@ class HomePage extends React.PureComponent {
   }
 
   render() {
-    const { intl, signOutAction } = this.props
+    const { intl, signInAction } = this.props
 
     return (
       <Styled.Container>
@@ -28,18 +26,17 @@ class HomePage extends React.PureComponent {
           <title>{intl.formatMessage(messages.pageTitle)}</title>
           <meta name={'description'} content={intl.formatMessage(messages.pageDescription)} />
         </Helmet>
-        <h1>
-          <FormattedMessage {...messages.header} />
-        </h1>
-        <Button action={signOutAction} />
+        <button onClick={signInAction}>
+          <h1><FormattedMessage {...messages.button} /></h1>
+        </button>
       </Styled.Container>
     )
   }
 }
 
-HomePage.propTypes = {
-  intl:          intlShape.isRequired,
-  signOutAction: PropTypes.func.isRequired,
+LoginPage.propTypes = {
+  intl:         intlShape.isRequired,
+  signInAction: PropTypes.func.isRequired,
 }
 
-export default injectIntl(HomePage)
+export default injectIntl(LoginPage)

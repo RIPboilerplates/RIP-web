@@ -1,5 +1,4 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
 import { Switch, Route } from 'react-router-dom'
 
 import {
@@ -15,9 +14,5 @@ const RootNav = () => (
     <Route component={NotFoundPage} />
   </Switch>
 )
-
-RootNav.propTypes = {
-  // RootNav props
-}
 
 export default RootNav

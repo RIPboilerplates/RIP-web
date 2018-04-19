@@ -7,9 +7,8 @@ import { bindActionCreators } from 'redux'
 
 import Component from './component'
 
-const mapStateToProps = (state) => ({ // eslint-disable-line no-unused-vars
-  // App state selectors
-  // Once state is used remove eslint disable line above
+const mapStateToProps = (state) => ({
+  loggedIn: state.getIn(['auth', 'authenticated']),
 })
 
 const mapDispatchToProps = (dispatch) => (

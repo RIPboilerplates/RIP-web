@@ -3,7 +3,7 @@ import renderer from 'utils/renderers'
 import mockStore from 'utils/mockStore'
 import Component from '../'
 
-describe('HomePage Component', () => {
+describe('LoginPage Component', () => {
   let component
   let store
 

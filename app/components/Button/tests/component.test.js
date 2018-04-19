@@ -9,12 +9,10 @@ let props
 
 beforeEach(() => {
   component = null
-  props = {
-    signOutAction: jest.fn(),
-  }
+  props = {}
 })
 
-describe('HomePage Component', () => {
+describe('Button Component', () => {
   describe('Snapshot Renders', () => {
     it('default', () => {
       component = renderer(<Component {...props} />).toJSON()

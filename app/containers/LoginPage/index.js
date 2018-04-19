@@ -1,20 +1,20 @@
 /**
-* HomePage Redux connected component
+* LoginPage Redux connected component
 */
-
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { signOutAction } from 'redux/Auth'
+import { signInAction } from 'redux/Auth'
+
 import Component from './component'
 
 const mapStateToProps = (state) => ({ // eslint-disable-line no-unused-vars
-  // HomePage state selectors
+  // LoginPage state selectors
   // Once state is used remove eslint disable line above
 })
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
-    signOutAction,
+    signInAction,
   }, dispatch)
 )
 

@@ -6,7 +6,8 @@ injectGlobal`
   body {
     height: 100%;
     width: 100%;
-    margin: 0;
+    display: flex;
+    flex-direction: column;
   }
 
   body {
@@ -19,8 +20,7 @@ injectGlobal`
 
   #app {
     background-color: #fafafa;
-    min-height: 100%;
-    min-width: 100%;
+    flex: 1;
   }
 
   p,

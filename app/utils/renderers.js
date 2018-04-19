@@ -16,7 +16,7 @@ const createComponentWithIntl = (children, props = { locale: 'en' }) =>
     </IntlProvider>
   )
 
-export const renderWithRouter = (children, store = mockStore({})) =>
+export const renderWithRouter = (children, store = mockStore()) =>
   renderer.create(
     <Provider store={store}>
       <ConnectedRouter history={history}>

@@ -1,6 +1,7 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
-import Navigation from 'navigation'
+import PropTypes from 'prop-types'
+import MainNav from 'navigation'
+import PublicNav from 'navigation/PublicRoutes'
 
 import Styled from './styles'
 
@@ -17,6 +18,9 @@ class App extends React.Component {
   }
 
   render() {
+    const { loggedIn } = this.props
+
+    const Navigation = loggedIn ? MainNav : PublicNav
     return (
       <Styled.Container>
         <Navigation />
@@ -26,7 +30,7 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  // prop types
+  loggedIn: PropTypes.bool.isRequired,
 }
 
 export default App
