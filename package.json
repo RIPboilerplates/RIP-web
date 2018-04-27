@@ -58,10 +58,8 @@
   },
   "moduleRoots": "app",
   "lint-staged": {
-    "*.js": [
-      "lint:eslint",
-      "stylelint"
-    ]
+    "*.js": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
+    "*/styles.js": "stylelint"
   },
   "pre-commit": "lint:staged",
   "babel": {
@@ -201,6 +199,13 @@
       ],
       "max-len": 0,
       "newline-per-chained-call": 0,
+      "object-curly-newline": [
+        2,
+        {
+          "minProperties": 4,
+          "consistent": true
+        }
+      ],
       "prefer-destructuring": [
         2,
         {
@@ -275,6 +280,8 @@
       "!app/**/*/constants.js",
       "!app/(config|themes)/*.js",
       "!app/(components|containers)/index.js",
+      "!app/(components|containers)/**/(styles|messages).js",
+      "!app/components/**/index.js",
       "!app/utils/history.js"
     ],
     "coverageThreshold": {

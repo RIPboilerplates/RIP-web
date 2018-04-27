@@ -1,5 +1,5 @@
 const fs = require('fs')
-const exec = require('child_process').exec
+const { exec } = require('child_process')
 const print = require('../../scripts/helpers/print')
 
 function languageIsSupported(language) {
