@@ -1,6 +1,6 @@
 {
   "name": "rip-web-boilerplate",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Opinionated react and react native boilerplate based off of react-boilerplate and ignite-ir-boilerplate",
   "repository": {
     "type": "git",
