@@ -5,7 +5,10 @@ const webpackConfig = require('./internals/webpack/webpack.dev.babel')
 /* eslint-disable key-spacing */
 module.exports = {
   title: `${name}\n${version}\nStyle guide`,
-  webpackConfig,
+  webpackConfig: {
+    ...webpackConfig,
+    plugins: [],
+  },
   sections: [
     {
       name: 'Containers',
