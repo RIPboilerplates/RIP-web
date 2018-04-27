@@ -13,6 +13,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'react-router-redux'
+import history from 'utils/history'
+
+import FontFaceObserver from 'fontfaceobserver'
 import 'sanitize.css/sanitize.css'
 
 // Import root app
@@ -25,30 +28,25 @@ import LanguageProvider from 'containers/LanguageProvider'
 import 'themes/global-styles'
 
 // Load the favicon, the manifest.json file and the .htaccess file
-/* eslint-disable import/no-unresolved, import/extensions */
 import '!file-loader?name=[name].[ext]!assets/images/favicons/favicon.ico'
-import '!file-loader?name=[name].[ext]!assets/images/favicons/icon-72x72.png'
-import '!file-loader?name=[name].[ext]!assets/images/favicons/icon-96x96.png'
-import '!file-loader?name=[name].[ext]!assets/images/favicons/icon-128x128.png'
-import '!file-loader?name=[name].[ext]!assets/images/favicons/icon-144x144.png'
-import '!file-loader?name=[name].[ext]!assets/images/favicons/icon-152x152.png'
-import '!file-loader?name=[name].[ext]!assets/images/favicons/icon-192x192.png'
-import '!file-loader?name=[name].[ext]!assets/images/favicons/icon-384x384.png'
-import '!file-loader?name=[name].[ext]!assets/images/favicons/icon-512x512.png'
-import '!file-loader?name=[name].[ext]!config/server//manifest.json'
-import 'file-loader?name=[name].[ext]!config/server/.htaccess'
-/* eslint-enable import/no-unresolved, import/extensions */
+import 'file-loader?name=[name].[ext]!./.htaccess' // eslint-disable-line import/extensions
 
 import configureStore from 'store'
 
 // Import i18n messages
-import { translationMessages } from 'I18n'
+import { translationMessages } from 'i18n'
 
 // Import config
 import Config from 'config/debug'
 
-// Import browser history
-import history from 'utils/history'
+// Observe loading of Open Sans (to remove open sans, remove the <link> tag in
+// the index.html file and this observer)
+const openSansObserver = new FontFaceObserver('Open Sans', {})
+
+// When Open Sans is loaded, add a font-family using Open Sans to the body
+openSansObserver.load().then(() => {
+  document.body.classList.add('fontLoaded')
+})
 
 // Create redux store with history
 const initialState = {}
@@ -73,7 +71,7 @@ if (module.hot) {
   // Hot reloadable React components and translation json files
   // modules.hot.accept does not accept dynamic dependencies,
   // have to be constants at compile-time
-  module.hot.accept(['I18n', 'containers/App'], () => {
+  module.hot.accept(['i18n', 'containers/App'], () => {
     ReactDOM.unmountComponentAtNode(MOUNT_NODE)
     render(translationMessages)
   })

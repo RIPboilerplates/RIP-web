@@ -15,7 +15,7 @@ const pkg = require('../../package.json')
 const presets = pkg.babel.presets
 const plugins = pkg.babel.plugins || []
 
-const i18n = require('I18n')
+const i18n = require('i18n')
 import { DEFAULT_LOCALE } from 'config/locale'
 
 require('shelljs/global')
@@ -44,7 +44,8 @@ const task = (message) => {
 
 // Wrap async functions below into a promise
 const glob = (pattern) => new Promise((resolve, reject) => {
-  nodeGlob(pattern, (error, value) => (error ? reject(error) : resolve(value)))
+  // Specify "nodir" in options to match files only.
+  nodeGlob(pattern, { nodir: true }, (error, value) => (error ? reject(error) : resolve(value)))
 })
 
 const readFile = (fileName) => new Promise((resolve, reject) => {
@@ -63,7 +64,7 @@ for (const locale of locales) {
   oldLocaleMappings[locale] = {}
   localeMappings[locale] = {}
   // File to store translation messages into
-  const translationFileName = `app/I18n/translations/${locale}.json`
+  const translationFileName = `app/i18n/translations/${locale}.json`
   try {
     // Parse the old translation message JSON files
     const messages = JSON.parse(fs.readFileSync(translationFileName))
@@ -128,12 +129,13 @@ const extractFromFile = async (fileName) => {
   extractTaskDone()
 
   // Make the directory if it doesn't exist, especially for first run
-  mkdir('-p', 'app/I18n/translations')
+  mkdir('-p', 'app/i18n/translations')
   for (const locale of locales) {
-    const translationFileName = `app/I18n/translations/${locale}.json`
+    const translationFileName = `app/i18n/translations/${locale}.json`
 
+    let localeTaskDone
     try {
-      const localeTaskDone = task(
+      localeTaskDone = task(
         `Writing translation messages for ${locale} to: ${translationFileName}`
       )
 

@@ -12,15 +12,18 @@ const webpack = require('webpack')
 process.noDeprecation = true
 
 module.exports = (options) => ({
+  mode:   options.mode,
   entry:  options.entry,
   output: Object.assign({ // Compile into js/build.js
     path:       path.resolve(process.cwd(), 'build'),
     publicPath: '/',
   }, options.output), // Merge with env dependent settings
+  optimization: options.optimization,
+
   module: {
     rules: [
       {
-        test:    /\.js$/, // Transform all .js files required somewhere with Babel
+        test:    /\.jsx?$/, // Transform all .js/.jsx files required somewhere with Babel
         exclude: /node_modules/,
         use:     {
           loader:  'babel-loader',
@@ -42,20 +45,49 @@ module.exports = (options) => ({
         use:     ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(eot|svg|otf|ttf|woff|woff2)$/,
+        test: /\.(eot|otf|ttf|woff|woff2)$/,
         use:  'file-loader',
+      },
+      {
+        test: /\.svg$/,
+        use:  [
+          {
+            loader:  'svg-url-loader',
+            options: {
+              // Inline files smaller than 10 kB
+              limit:    10 * 1024,
+              noquotes: true,
+            },
+          },
+        ],
       },
       {
         test: /\.(jpg|png|gif)$/,
         use:  [
-          'file-loader',
+          {
+            loader:  'url-loader',
+            options: {
+              // Inline files smaller than 10 kB
+              limit: 10 * 1024,
+            },
+          },
           {
             loader:  'image-webpack-loader',
             options: {
-              progressive:       true,
-              optimizationLevel: 7,
-              interlaced:        false,
-              pngquant:          {
+              mozjpeg: {
+                enabled: false,
+                // NOTE: mozjpeg is disabled as it causes errors in some Linux environments
+                // Try enabling it in your environment by switching the config to:
+                // enabled: true,
+                // progressive: true,
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              optipng: {
+                optimizationLevel: 7,
+              },
+              pngquant: {
                 quality: '65-90',
                 speed:   4,
               },
@@ -66,10 +98,6 @@ module.exports = (options) => ({
       {
         test: /\.html$/,
         use:  'html-loader',
-      },
-      {
-        test: /\.json$/,
-        use:  'json-loader',
       },
       {
         test: /\.(mp4|webm)$/,
@@ -89,14 +117,13 @@ module.exports = (options) => ({
     }),
 
     // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV`
-    // inside your code for any environment checks; UglifyJS will automatically
+    // inside your code for any environment checks UglifyJS will automatically
     // drop any unreachable code.
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV),
       },
     }),
-    new webpack.NamedModulesPlugin(),
   ]),
   resolve: {
     modules:    ['app', 'node_modules'],
@@ -107,8 +134,8 @@ module.exports = (options) => ({
     ],
     mainFields: [
       'browser',
-      'main',
       'jsnext:main',
+      'main',
     ],
   },
   devtool:     options.devtool,

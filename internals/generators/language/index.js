@@ -4,7 +4,7 @@ const print = require('../../scripts/helpers/print')
 
 function languageIsSupported(language) {
   try {
-    fs.accessSync(`app/I18n/translations/${language}.json`, fs.F_OK)
+    fs.accessSync(`app/i18n/translations/${language}.json`, fs.F_OK)
     return true
   } catch (e) {
     return false
@@ -34,37 +34,37 @@ module.exports = {
     const actions = []
     actions.push({
       type:         'modify',
-      path:         '../../app/I18n/index.js',
+      path:         '../../app/i18n/index.js',
       pattern:      /('react-intl\/locale-data\/[a-z]+'\n)(?!.*'react-intl\/locale-data\/[a-z]+')/g,
       templateFile: './language/intl-locale-data.hbs',
     })
     actions.push({
       type:         'modify',
-      path:         '../../app/I18n/index.js',
+      path:         '../../app/i18n/index.js',
       pattern:      /(\s+'[a-z]+',\n)(?!.*\s+'[a-z]+',)/g,
       templateFile: './language/app-locale.hbs',
     })
     actions.push({
       type:         'modify',
-      path:         '../../app/I18n/index.js',
+      path:         '../../app/i18n/index.js',
       pattern:      /(from\s'.\/translations\/[a-z]+.json'\n)(?!.*from\s'.\/translations\/[a-z]+.json')/g,
       templateFile: './language/translation-messages.hbs',
     })
     actions.push({
       type:         'modify',
-      path:         '../../app/I18n/index.js',
+      path:         '../../app/i18n/index.js',
       pattern:      /(addLocaleData\([a-z]+LocaleData\)\n)(?!.*addLocaleData\([a-z]+LocaleData\))/g,
       templateFile: './language/add-locale-data.hbs',
     })
     actions.push({
       type:         'modify',
-      path:         '../../app/I18n/index.js',
+      path:         '../../app/i18n/index.js',
       pattern:      /([a-z]+:\sformatTranslationMessages\('[a-z]+',\s[a-z]+TranslationMessages\),\n)(?!.*[a-z]+:\sformatTranslationMessages\('[a-z]+',\s[a-z]+TranslationMessages\),)/g,
       templateFile: './language/format-translation-messages.hbs',
     })
     actions.push({
       type:         'add',
-      path:         '../../app/I18n/translations/{{language}}.json',
+      path:         '../../app/i18n/translations/{{language}}.json',
       templateFile: './language/translations-json.hbs',
       abortOnFail:  true,
     })

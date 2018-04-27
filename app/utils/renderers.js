@@ -1,6 +1,6 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-// I18n rendering
+// i18n rendering
 import { IntlProvider } from 'react-intl'
 import { shallowWithIntl, mountWithIntl } from 'enzyme-react-intl'
 // Redux rendering
