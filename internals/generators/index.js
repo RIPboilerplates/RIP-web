@@ -6,6 +6,7 @@ const languageGenerator = require('./language/index.js')
 const reduxGenerator = require('./redux/index.js')
 const constantsGenerator = require('./reduxConstant/index.js')
 const routeGenerator = require('./route/index.js')
+const envVarGenerator = require('./envVar/index.js')
 
 /**
  * generator/index.js
@@ -19,6 +20,7 @@ module.exports = (plop) => {
   plop.setGenerator('redux', reduxGenerator)
   plop.setGenerator('redux constant', constantsGenerator)
   plop.setGenerator('language', languageGenerator)
+  plop.setGenerator('env var', envVarGenerator)
   plop.addHelper('directory', (comp) => {
     try {
       fs.accessSync(path.join(__dirname, `../../app/containers/${comp}`), fs.F_OK)
