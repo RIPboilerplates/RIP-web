@@ -5,14 +5,15 @@ import {
   LOCATION_CHANGE,
 } from '../constants'
 
-let result
-let initialState
-beforeEach(() => {
-  initialState = { ...INITIAL_STATE }
-  result = { ...INITIAL_STATE }
-})
-
 describe('navigation reducer', () => {
+  let result
+  let initialState
+
+  beforeEach(() => {
+    initialState = { ...INITIAL_STATE }
+    result = { ...INITIAL_STATE }
+  })
+
   it('returns the initial state', () => {
     expect(reducer(undefined, {}).toJS()).toEqual(result)
   })

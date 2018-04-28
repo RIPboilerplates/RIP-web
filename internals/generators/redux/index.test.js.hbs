@@ -6,15 +6,15 @@ import {
   {{ constantCase actionName }},
 } from '../constants'
 
-let dispatch
-let result
-
-beforeEach(() => {
-  dispatch = jest.fn()
-  result = null
-})
-
 describe('{{ properCase name }} actions', () => {
+  let dispatch
+  let result
+
+  beforeEach(() => {
+    dispatch = jest.fn()
+    result = null
+  })
+
   describe('{{ camelCase actionName }}Action', () => {
     it('dispatches correctly', () => {
       {{ camelCase actionName }}Action()(dispatch)

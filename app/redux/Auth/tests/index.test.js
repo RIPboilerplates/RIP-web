@@ -8,15 +8,15 @@ import {
   SIGN_OUT,
 } from '../constants'
 
-let dispatch
-let result
-
-beforeEach(() => {
-  dispatch = jest.fn()
-  result = null
-})
-
 describe('Auth actions', () => {
+  let dispatch
+  let result
+
+  beforeEach(() => {
+    dispatch = jest.fn()
+    result = null
+  })
+
   describe('signInAction', () => {
     it('dispatches correctly', () => {
       signInAction()(dispatch)
