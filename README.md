@@ -110,8 +110,6 @@ Now you're ready to rumble!
 ## TODO
  - [ ] verify if thunks need injector like thunks did
  - [ ] move generators to separate package
- - [ ] redux generators options for sync
- - [ ] fix redux constant generator adding tests twice
  - [ ] add constants to mockStore helper on redux generate
  - [ ] get reactotron working
  - [ ] styguidest config for non components

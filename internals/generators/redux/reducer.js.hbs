@@ -17,6 +17,7 @@ export const reducer = (state = fromJS(INITIAL_STATE), action) => {
         .set('fetched', false)
     case {{ constantCase actionName }}_FULFILLED:
       return state
+        .set('{{ stateVariable }}', action.payload)
         .set('fetching', false)
         .set('fetched', true)
         .set('error', null)

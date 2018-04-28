@@ -6,7 +6,8 @@ describe('{{ properCase name }} thunks', () => {
   describe('{{ camelCase actionName }}Thunk', () => {
     it('resolves asynchronously', async () => {
       expect.assertions(1)
-      await {{ camelCase actionName }}Thunk().resolves
+      await expect({{ camelCase actionName }}Thunk())
+        .resolves
         .toEqual('YAY!!')
     })
   })

@@ -22,6 +22,17 @@ module.exports = {
     name:    'actionName',
     message: 'Enter a name for the default action',
     default: 'DEFAULT_ACTION',
+  }, {
+    type:    'input',
+    name:    'stateVariable',
+    message: 'What variable in state should the data be stored in:',
+    default: 'value',
+  }, {
+    type:    'list',
+    name:    'defaultValue',
+    message: 'What type of empty value should the variables default value be:',
+    default: 'null',
+    choices: () => ['null', '\'\'', '{}', '[]', 'false', 'true'],
   }],
   actions: [{
     type:         'add',

@@ -6,6 +6,10 @@ import {
   {{ constantCase actionName }},
 } from '../constants'
 
+jest.mock('../thunks', () => ({
+  {{ camelCase actionName }}Thunk: jest.fn(() => 'YAY!!'),
+}))
+
 describe('{{ properCase name }} actions', () => {
   let dispatch
   let result

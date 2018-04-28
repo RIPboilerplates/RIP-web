@@ -132,6 +132,13 @@ module.exports = {
         pattern:      /(^}\)$)/gm,
         templateFile: './reduxConstant/test-thunk.hbs',
       })
+
+      actions.push({
+        type:         'modify',
+        path:         '../../app/redux/{{properCase name}}/tests/index.test.js',
+        pattern:      /(^}\)\)$)/m,
+        templateFile: './reduxConstant/mock-thunk.hbs',
+      })
     }
 
     return actions
