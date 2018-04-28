@@ -4,6 +4,7 @@
 
 const path = require('path')
 const webpack = require('webpack')
+require('dotenv').config()
 
 // Remove this line once the following warning goes away (it was meant for webpack loader authors not users):
 // 'DeprecationWarning: loaderUtils.parseQuery() received a non-string value which can be problematic,
@@ -12,6 +13,9 @@ const webpack = require('webpack')
 process.noDeprecation = true
 
 module.exports = (options) => ({
+  node: {
+    fs: 'empty',
+  },
   mode:   options.mode,
   entry:  options.entry,
   output: Object.assign({ // Compile into js/build.js
