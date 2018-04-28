@@ -9,22 +9,25 @@
 
   it('returns state for {{ constantCase actionName }}_FULFILLED', () => {
     setFetched()
+    result.{{stateVariable}} = 'YAY!!'
 
-    store = reducer(fromJS(initialState), { type: {{ constantCase actionName }}_FULFILLED })
+    store = reducer(fromJS(initialState), { type: {{ constantCase actionName }}_FULFILLED, payload: 'YAY!!' })
     expect(store.toJS()).toEqual(result)
   })
 
   it('returns state for {{ constantCase actionName }}_REJECTED', () => {
     setFetched()
-    payload = { error }
+    result.error = error
 
-    store = reducer(fromJS(initialState), { type: {{ constantCase actionName }}_REJECTED, payload })
+    store = reducer(fromJS(initialState), { type: {{ constantCase actionName }}_REJECTED, payload: error })
     expect(store.toJS()).toEqual(result)
   })
   {{else}}
   it('returns state for {{ constantCase actionName }}', () => {
-    store = reducer(fromJS(initialState), { type: {{ constantCase actionName }} })
-    expect(store.toJS()).toEqual('YAY!!')
+    result.{{stateVariable}} = 'YAY!!'
+
+    store = reducer(fromJS(initialState), { type: {{ constantCase actionName }}, payload: 'YAY!!' })
+    expect(store.toJS()).toEqual(result)
   })
   {{/if}}
 })

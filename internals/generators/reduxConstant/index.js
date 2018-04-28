@@ -8,7 +8,7 @@ module.exports = {
   prompts:     [{
     type:     'input',
     name:     'name',
-    default:  'Navigation',
+    default:  'Auth',
     message:  'What reduxer should the changes be added to?',
     validate: (value) => {
       if ((/.+/).test(value)) {
@@ -20,7 +20,7 @@ module.exports = {
   }, {
     type:     'input',
     name:     'actionName',
-    default:  'LOCATION_CHANGE',
+    default:  'DEFAULT_ACTION',
     message:  'What should the constant be named?',
     validate: (value) => {
       if ((/.+/).test(value)) {
@@ -34,18 +34,17 @@ module.exports = {
     name:    'isAsync',
     default: true,
     message: 'Will the action dispatch an async thunk?',
-  // }, {
-  //   type:     'input',
-  //   name:     'stateVariable',
-  //   message:  'What variable in state should the data be stored in',
-  //   default:  'value',
-  //   validate: (value) => {
-  //     if (value.split(':').length === 2) {
-  //       return true
-  //     }
-  //
-  //     return 'A value'
-  //   },
+  }, {
+    type:    'input',
+    name:    'stateVariable',
+    message: 'What variable in state should the data be stored in:',
+    default: 'value',
+  }, {
+    type:    'list',
+    name:    'defaultValue',
+    message: 'What type of empty value should the variables default value be:',
+    default: 'null',
+    choices: () => ['null', '\'\'', '{}', '[]', 'false', 'true'],
   }],
   actions: (data) => {
     const actions = [{
@@ -53,6 +52,11 @@ module.exports = {
       path:         '../../app/redux/{{properCase name}}/constants.js',
       pattern:      /(\/\*\seslint-enable no-multi-spaces\s\*\/\n)(?!\/\*\seslint-enable no-multi-spaces\s\*\/)/g,
       templateFile: './reduxConstant/constants.hbs',
+    }, {
+      type:         'modify',
+      path:         '../../app/redux/{{properCase name}}/constants.js',
+      pattern:      /(export const INITIAL_STATE = {)/,
+      templateFile: './reduxConstant/default-state.hbs',
     }, {
       type:         'modify',
       path:         '../../app/redux/{{properCase name}}/index.js',

@@ -6,6 +6,7 @@
         .set('error', null)
     case {{ constantCase actionName }}_FULFILLED:
       return state
+        .set('{{stateVariable}}', action.payload)
         .set('fetching', false)
         .set('fetched', true)
         .set('error', null)
@@ -17,6 +18,6 @@
     {{else}}
     case {{ constantCase actionName }}:
       return state
-        .set('value', action.payload)
+        .set('{{stateVariable}}', action.payload)
     {{/if}}
 $1
