@@ -4,7 +4,7 @@
       {{ camelCase actionName }}Action()(dispatch)
 
       result = {
-        type: {{ constantCase actionName }},
+        type:    {{ constantCase actionName }},
         payload: 'YAY!!',
       }
       expect(dispatch).toHaveBeenCalledWith(result)

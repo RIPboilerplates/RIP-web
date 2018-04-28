@@ -1,4 +1,8 @@
+  {{#if isAsync}}
   {{ constantCase actionName }}_PENDING,
   {{ constantCase actionName }}_FULFILLED,
   {{ constantCase actionName }}_REJECTED,
+  {{else}}
+  {{ constantCase actionName }},
+  {{/if}}
 $1

@@ -5,5 +5,9 @@ $1
 export const {{ camelCase actionName }}Action = () => (dispatch) =>
   dispatch({
     type:    {{ constantCase actionName }},
+    {{#if isAsync}}
     payload: {{ camelCase actionName }}Thunk(),
+    {{else}}
+    payload: 'YAY!!',
+    {{/if}}
 })

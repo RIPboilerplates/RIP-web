@@ -1,4 +1,5 @@
 
+  {{#if isAsync}}
   it('returns state for {{ constantCase actionName }}_PENDING', () => {
     setFetching()
 
@@ -20,4 +21,10 @@
     store = reducer(fromJS(initialState), { type: {{ constantCase actionName }}_REJECTED, payload })
     expect(store.toJS()).toEqual(result)
   })
+  {{else}}
+  it('returns state for {{ constantCase actionName }}', () => {
+    store = reducer(fromJS(initialState), { type: {{ constantCase actionName }} })
+    expect(store.toJS()).toEqual('YAY!!')
+  })
+  {{/if}}
 })

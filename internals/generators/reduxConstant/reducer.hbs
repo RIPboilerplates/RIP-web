@@ -1,3 +1,4 @@
+    {{#if isAsync}}
     case {{ constantCase actionName }}_PENDING:
       return state
         .set('fetching', true)
@@ -13,4 +14,9 @@
         .set('fetching', false)
         .set('fetched', true)
         .set('error', action.payload)
+    {{else}}
+    case {{ constantCase actionName }}:
+      return state
+        .set('value', action.payload)
+    {{/if}}
 $1
