@@ -1,43 +1,18 @@
-/* eslint strict: ["off"] */
+const EnvAdd = require('./add/index.js')
+const EnvModify = require('./modify/index.js')
+const EnvRemove = require('./remove/index.js')
 
-'use strict'
-
-const envVarExists = require('../utils/envVarExists')
+const { delLine } = require('../utils/removeActions.js')
 
 /**
- * Env Vars Generator
+ * generator/index.js
+ *
+ * Exports the generators so plop knows them
  */
-module.exports = {
-  description: 'Add a environment variable to the environment',
-  prompts:     [{
-    type:     'input',
-    name:     'name',
-    message:  'What is the the variable name:',
-    default:  'TEST',
-    validate: (value) => {
-      if ((/.+/).test(value)) {
-        return envVarExists(value) ? 'That environment variable already exists' : true
-      }
-
-      return 'The variable name is required'
-    },
-  }, {
-    type:    'input',
-    name:    'value',
-    message: 'What is the the variable value:',
-    default: 'TEST',
-  }],
-  actions: [{
-    type:        'append',
-    path:        '../../internals/webpack/webpack.base.babel.js',
-    pattern:     /(NODE_ENV: JSON\.stringify\(process\.env\.NODE_ENV\),)/,
-    template:    '        {{constantCase name}}: JSON.stringify(process.env.{{constantCase name}}),',
-    abortOnFail: true,
-  }, {
-    type:        'modify',
-    path:        '../../.env',
-    pattern:     /([\s\S]*)/,
-    template:    '$1{{constantCase name}}={{value}}\n',
-    abortOnFail: true,
-  }],
+module.exports = (plop) => {
+  plop.setActionType('del-line', delLine)
+  plop.setGenerator('add', EnvAdd)
+  plop.setGenerator('modify', EnvModify)
+  plop.setGenerator('remove', EnvRemove)
+  plop.addHelper('curly', (object, open) => (open ? '{' : '}'))
 }

@@ -11,11 +11,22 @@ const filePath = '../../../.env'
  * @param {string} envVar to check if exists
  * @return {boolean} Is there an env var with same value as the @param
  */
-const envVarExists = (envVar) => {
+const envVarExists = (envVar) => envVarsList().indexOf(constantCase(envVar)) > -1
+
+/**
+ * envVarsList
+ *
+ * List of environment variables that exist in the .env file
+ * @return {array} List of environment variables
+ */
+const envVarsList = () => {
   const file = fs.readFileSync(path.join(root, filePath)).toString()
   const vars = file.split('\n').map((line) => line.split('=')[0])
   vars.pop()
-  return vars.indexOf(constantCase(envVar)) > -1
+  return vars
 }
 
-module.exports = envVarExists
+module.exports = {
+  envVarExists,
+  envVarsList,
+}
