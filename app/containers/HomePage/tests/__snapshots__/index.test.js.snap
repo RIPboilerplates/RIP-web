@@ -10,7 +10,7 @@ exports[`HomePage Component Snapshot Renders default 1`] = `
     </span>
   </h1>
   <button
-    className="styles__Container-eZxbLb fnNXbV"
+    className="styles__Container-eZxbLb fgfewV"
     onClick={[Function]}
   >
     <span>

@@ -113,3 +113,4 @@ Now you're ready to rumble!
  - [ ] add constants to mockStore helper on redux generate
  - [ ] get reactotron working
  - [ ] styguidest config for non components
+ - [ ] create .env file in setup script

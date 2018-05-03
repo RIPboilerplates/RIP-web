@@ -4,7 +4,7 @@
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-
+import { withRouter } from 'react-router-dom'
 import Component from './component'
 
 const mapStateToProps = (state) => ({
@@ -17,4 +17,4 @@ const mapDispatchToProps = (dispatch) => (
   }, dispatch)
 )
 
-export default connect(mapStateToProps, mapDispatchToProps)(Component)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Component))
