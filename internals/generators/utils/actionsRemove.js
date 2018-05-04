@@ -1,5 +1,7 @@
 const fs = require('fs')
 const path = require('path')
+const { exec } = require('child_process')
+const print = require('../../scripts/helpers/print')
 
 const delLine = (answers, config) => {
   const filePath = path.join(__dirname, '../../../', config.file)
@@ -15,6 +17,24 @@ const delLine = (answers, config) => {
   return filePath.toString()
 }
 
+const delDir = (answers, config) => {
+  const filePath = path.join(__dirname, '../../../', config.directory)
+
+  if (!config.directory) throw Error('`directory` is required')
+  if (!fs.existsSync(filePath)) throw Error('directory does not exist')
+
+  const cmd = `if [ -d "${filePath}" ]; then rm -fr ${filePath}; fi`
+  exec(cmd, (err, result, stderr) => {
+    if (err || stderr) {
+      throw err || stderr
+    }
+    print(result)
+  })
+
+  return filePath
+}
+
 module.exports = {
   delLine,
+  delDir,
 }

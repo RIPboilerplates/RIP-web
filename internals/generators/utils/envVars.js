@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const constantCase = require('constant-case')
+const { constantCase } = require('change-case')
 const root = __dirname
 const filePath = '../../../.env'
 
@@ -30,16 +30,7 @@ const envVarExists = (envVar) => envVarsList().indexOf(constantCase(envVar)) > -
  */
 const envVarsList = () => Object.keys(vars)
 
-/**
- * envVarsValues
- *
- * Object containing all key value pairs
- * @return {object} containing all key value pairs
- */
-const envVars = () => file
-
 module.exports = {
   envVarExists,
   envVarsList,
-  envVars,
 }

@@ -1,6 +1,10 @@
 const fs = require('fs')
 const path = require('path')
-const componentGenerator = require('./component/index.js')
+// Components
+const ComponentAdd = require('./component/add')
+const ComponentRename = require('./component/rename')
+const ComponentRemove = require('./component/remove')
+
 const containerGenerator = require('./container/index.js')
 const languageGenerator = require('./language/index.js')
 const reduxGenerator = require('./redux/index.js')
@@ -11,7 +15,8 @@ const EnvVarAdd = require('./envVar/add.js')
 const EnvVarModify = require('./envVar/modify.js')
 const EnvVarRemove = require('./envVar/remove.js')
 
-const { delLine } = require('./utils/removeActions.js')
+const { delLine, delDir } = require('./utils/actionsRemove.js')
+const { renameDirectory, renameInFiles } = require('./utils/actionsReplace')
 
 /**
  * generator/index.js
@@ -19,8 +24,13 @@ const { delLine } = require('./utils/removeActions.js')
  * Exports the generators so plop knows them
  */
 module.exports = (plop) => {
-  plop.setActionType('del-line', delLine)
-  plop.setGenerator('component', componentGenerator)
+  plop.setActionType('delete-line', delLine)
+  plop.setActionType('delete-directory', delDir)
+  plop.setActionType('rename-in-files', renameInFiles)
+  plop.setActionType('rename-directory', renameDirectory)
+  plop.setGenerator('component - add', ComponentAdd)
+  plop.setGenerator('component - rename', ComponentRename)
+  plop.setGenerator('component - remove', ComponentRemove)
   plop.setGenerator('container', containerGenerator)
   plop.setGenerator('route', routeGenerator)
   plop.setGenerator('redux', reduxGenerator)

@@ -29,13 +29,13 @@ module.exports = {
   }],
   actions: [{
     type:        'append',
-    path:        '../../../internals/webpack/webpack.base.babel.js',
+    path:        '../../internals/webpack/webpack.base.babel.js',
     pattern:     /(NODE_ENV: JSON\.stringify\(process\.env\.NODE_ENV\),)/,
     template:    '        {{constantCase name}}: JSON.stringify(process.env.{{constantCase name}}),',
     abortOnFail: true,
   }, {
     type:        'modify',
-    path:        '../../../.env',
+    path:        '../../.env',
     pattern:     /([\s\S]*)/,
     template:    '$1{{constantCase name}}={{value}}\n',
     abortOnFail: true,

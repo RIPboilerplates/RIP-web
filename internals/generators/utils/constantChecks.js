@@ -1,6 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-const constantCase = require('constant-case')
+const { constantCase } = require('change-case')
 const root = __dirname
 const redux = '../../../app/redux'
 const reduxers = fs.readdirSync(path.join(root, redux)).filter((f) => fs.statSync(path.join(root, redux, f)).isDirectory())

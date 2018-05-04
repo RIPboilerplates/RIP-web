@@ -1,4 +1,4 @@
-const componentExists = require('../utils/componentExists')
+const { componentExists } = require('../utils/components')
 
 /**
  * Container Generator

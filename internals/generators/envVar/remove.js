@@ -17,11 +17,11 @@ module.exports = {
     choices,
   }],
   actions: (data) => [{
-    type: 'del-line',
+    type: 'delete-line',
     file: '.env',
     key:  `${data.name}=`,
   }, {
-    type: 'del-line',
+    type: 'delete-line',
     file: 'internals/webpack/webpack.base.babel.js',
     key:  `JSON.stringify(process.env.${data.name})`,
   }],

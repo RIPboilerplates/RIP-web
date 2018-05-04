@@ -2,7 +2,7 @@
 
 'use strict'
 
-const constantCase = require('constant-case')
+const { constantCase } = require('change-case')
 const { envVarsList } = require('../utils/envVars')
 
 const choices = envVarsList()
@@ -36,11 +36,11 @@ module.exports = {
     const value = newVar[1]
 
     return [{
-      type: 'del-line',
+      type: 'delete-line',
       file: '.env',
       key:  `${data.name}=`,
     }, {
-      type: 'del-line',
+      type: 'delete-line',
       file: 'internals/webpack/webpack.base.babel.js',
       key:  `JSON.stringify(process.env.${data.name})`,
     }, {
