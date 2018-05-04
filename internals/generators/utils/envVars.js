@@ -4,6 +4,15 @@ const constantCase = require('constant-case')
 const root = __dirname
 const filePath = '../../../.env'
 
+const file = fs.readFileSync(path.join(root, filePath)).toString().split('\n')
+file.pop()
+
+const vars = {}
+file.forEach((line) => {
+  const envVar = line.split('=')
+  vars[envVar[0]] = envVar[1]
+})
+
 /**
  * envVarExists
  *
@@ -19,14 +28,18 @@ const envVarExists = (envVar) => envVarsList().indexOf(constantCase(envVar)) > -
  * List of environment variables that exist in the .env file
  * @return {array} List of environment variables
  */
-const envVarsList = () => {
-  const file = fs.readFileSync(path.join(root, filePath)).toString()
-  const vars = file.split('\n').map((line) => line.split('=')[0])
-  vars.pop()
-  return vars
-}
+const envVarsList = () => Object.keys(vars)
+
+/**
+ * envVarsValues
+ *
+ * Object containing all key value pairs
+ * @return {object} containing all key value pairs
+ */
+const envVars = () => file
 
 module.exports = {
   envVarExists,
   envVarsList,
+  envVars,
 }

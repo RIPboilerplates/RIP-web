@@ -1,11 +1,11 @@
-const EnvAdd = require('./add/index.js')
-const EnvModify = require('./modify/index.js')
-const EnvRemove = require('./remove/index.js')
+const EnvAdd = require('./add.js')
+const EnvModify = require('./modify.js')
+const EnvRemove = require('./remove.js')
 
 const { delLine } = require('../utils/removeActions.js')
 
 /**
- * generator/index.js
+ * generator.js
  *
  * Exports the generators so plop knows them
  */
