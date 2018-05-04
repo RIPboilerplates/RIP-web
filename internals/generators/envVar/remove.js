@@ -2,7 +2,7 @@
 
 'use strict'
 
-const { envVarsList } = require('../../utils/envVars')
+const { envVarsList } = require('../utils/envVars')
 
 const choices = envVarsList()
 /**

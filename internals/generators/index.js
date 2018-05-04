@@ -6,8 +6,10 @@ const languageGenerator = require('./language/index.js')
 const reduxGenerator = require('./redux/index.js')
 const constantsGenerator = require('./reduxConstant/index.js')
 const routeGenerator = require('./route/index.js')
-const envVarGenerator = require('./envVar/add/index.js')
-const EnvVarRemove = require('./envVar/remove/index.js')
+// Env Vars
+const EnvVarAdd = require('./envVar/add.js')
+const EnvVarModify = require('./envVar/modify.js')
+const EnvVarRemove = require('./envVar/remove.js')
 
 const { delLine } = require('./utils/removeActions.js')
 
@@ -24,8 +26,9 @@ module.exports = (plop) => {
   plop.setGenerator('redux', reduxGenerator)
   plop.setGenerator('redux constant', constantsGenerator)
   plop.setGenerator('language', languageGenerator)
-  plop.setGenerator('add env var', envVarGenerator)
-  plop.setGenerator('remove env var', EnvVarRemove)
+  plop.setGenerator('env var - add', EnvVarAdd)
+  plop.setGenerator('env var - modify', EnvVarModify)
+  plop.setGenerator('env var - remove', EnvVarRemove)
   plop.addHelper('directory', (comp) => {
     try {
       fs.accessSync(path.join(__dirname, `../../app/containers/${comp}`), fs.F_OK)
