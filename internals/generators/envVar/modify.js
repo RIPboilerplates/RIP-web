@@ -45,13 +45,13 @@ module.exports = {
       key:  `JSON.stringify(process.env.${data.name})`,
     }, {
       type:        'append',
-      path:        '../../../internals/webpack/webpack.base.babel.js',
+      path:        '../../internals/webpack/webpack.base.babel.js',
       pattern:     /(NODE_ENV: JSON\.stringify\(process\.env\.NODE_ENV\),)/,
       template:    `        ${key}: JSON.stringify(process.env.${key}),`,
       abortOnFail: true,
     }, {
       type:        'modify',
-      path:        '../../../.env',
+      path:        '../../.env',
       pattern:     /([\s\S]*)/,
       template:    `$1${key}=${value}\n`,
       abortOnFail: true,
