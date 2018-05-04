@@ -16,7 +16,7 @@
     "open:app": "open http://localhost:3000",
     "open:coverage": "open coverage/lcov-report/index.html",
     "open:docs": "open http://localhost:6060",
-    "precommit": "npm run lint:staged",
+    "precommit": "npm run lint:staged && npm test",
     "analyze:clean": "rimraf stats.json",
     "preanalyze": "npm run analyze:clean",
     "analyze": "node ./internals/scripts/analyze.js",
@@ -59,6 +59,12 @@
     "docs": "npm run open:docs && npm run start:docs"
   },
   "moduleRoots": "app",
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn test",
+      "pre-push": "yarn test"
+    }
+  },
   "lint-staged": {
     "*.js": "yarn lint"
   },
