@@ -1,10 +1,9 @@
 const metrics = {
-  marginBase:   '15px',
-  marginSmall:  '10px',
-  marginLarge:  '30px',
-  paddingBase:  '15px',
-  paddingSmall: '10px',
-  paddingLarge: '30px',
+  sxSpace: '5px',
+  smSpace: '10px',
+  mdSpace: '20px',
+  lgSpace: '30px',
+  xlSpace: '40px',
 }
 
 export default metrics

@@ -285,7 +285,7 @@
       "!app/*/RbGenerated*/*.js",
       "!app/app.js",
       "!app/**/*/constants.js",
-      "!app/(config|themes)/*.js",
+      "!app/(config|themes|assets)/*.js",
       "!app/(components|containers)/index.js",
       "!app/(components|containers)/**/(styles|messages).js",
       "!app/components/**/index.js",

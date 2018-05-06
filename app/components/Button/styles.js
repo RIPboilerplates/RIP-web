@@ -5,6 +5,6 @@ import Metrics from 'themes/metrics'
 export default {
   Container: styled.button`
     background-color: ${Colors.snow};
-    padding: ${Metrics.paddingBase};
+    padding: ${Metrics.mdSpace};
   `,
 }

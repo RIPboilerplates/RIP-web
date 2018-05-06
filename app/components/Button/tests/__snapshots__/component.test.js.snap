@@ -2,7 +2,7 @@
 
 exports[`Button Component Snapshot Renders default 1`] = `
 <button
-  className="styles__Container-eZxbLb fukdjs"
+  className="styles__Container-eZxbLb czehpr"
   onClick={undefined}
 >
   <span>
