@@ -106,11 +106,3 @@ Now you're ready to rumble!
 - [Your app](docs/js): Supercharging your app with Routing, Redux, simple
   asynchronicity helpers, etc.
 - [**Troubleshooting**](docs/general/gotchas.md): Solutions to common problems faced by developers.
-
-## TODO
- - [ ] verify if thunks need injector like thunks did
- - [ ] move generators to separate package
- - [ ] add constants to mockStore helper on redux generate
- - [ ] get reactotron working
- - [ ] styguidest config for non components
- - [ ] create .env file in setup script
