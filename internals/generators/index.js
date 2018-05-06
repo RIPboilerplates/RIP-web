@@ -1,11 +1,14 @@
-const fs = require('fs')
-const path = require('path')
+const insertToPlop = require('./utils/insertToPlop')
 // Components
 const ComponentAdd = require('./component/add')
 const ComponentRename = require('./component/rename')
 const ComponentRemove = require('./component/remove')
+// Containers
+const ContainerAdd = require('./container/add')
+const ContainerRename = require('./container/rename')
+const ContainerRemove = require('./container/remove')
 
-const containerGenerator = require('./container/index.js')
+
 const languageGenerator = require('./language/index.js')
 const reduxGenerator = require('./redux/index.js')
 const constantsGenerator = require('./reduxConstant/index.js')
@@ -15,8 +18,6 @@ const EnvVarAdd = require('./envVar/add.js')
 const EnvVarModify = require('./envVar/modify.js')
 const EnvVarRemove = require('./envVar/remove.js')
 
-const { delLine, delDir } = require('./utils/actionsRemove.js')
-const { renameDirectory, renameInFiles } = require('./utils/actionsReplace')
 
 /**
  * generator/index.js
@@ -24,28 +25,24 @@ const { renameDirectory, renameInFiles } = require('./utils/actionsReplace')
  * Exports the generators so plop knows them
  */
 module.exports = (plop) => {
-  plop.setActionType('delete-line', delLine)
-  plop.setActionType('delete-directory', delDir)
-  plop.setActionType('rename-in-files', renameInFiles)
-  plop.setActionType('rename-directory', renameDirectory)
+  insertToPlop(plop)
+  // components
   plop.setGenerator('component - add', ComponentAdd)
   plop.setGenerator('component - rename', ComponentRename)
   plop.setGenerator('component - remove', ComponentRemove)
-  plop.setGenerator('container', containerGenerator)
+  // containers
+  plop.setGenerator('container - add', ContainerAdd)
+  plop.setGenerator('container - rename', ContainerRename)
+  plop.setGenerator('container - remove', ContainerRemove)
+  // routes
   plop.setGenerator('route', routeGenerator)
+  // redux
   plop.setGenerator('redux', reduxGenerator)
   plop.setGenerator('redux constant', constantsGenerator)
+  // language
   plop.setGenerator('language', languageGenerator)
+  // env
   plop.setGenerator('env var - add', EnvVarAdd)
   plop.setGenerator('env var - modify', EnvVarModify)
   plop.setGenerator('env var - remove', EnvVarRemove)
-  plop.addHelper('directory', (comp) => {
-    try {
-      fs.accessSync(path.join(__dirname, `../../app/containers/${comp}`), fs.F_OK)
-      return `containers/${comp}`
-    } catch (e) {
-      return `components/${comp}`
-    }
-  })
-  plop.addHelper('curly', (object, open) => (open ? '{' : '}'))
 }

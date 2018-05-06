@@ -1,12 +1,12 @@
-const { componentsList } = require('../utils/components')
+const { containersList } = require('../utils/components')
 
 module.exports = {
-  description: 'Rename a component',
+  description: 'Rename a container',
   prompts:     [{
     type:    'list',
     name:    'from',
-    message: 'Which component',
-    choices: componentsList,
+    message: 'Which container',
+    choices: containersList,
   }, {
     type:    'input',
     name:    'to',

@@ -23,34 +23,33 @@ const renameDirectory = (answers, config) => {
   return `${fromPath} => ${toPath}`
 }
 
-const renameInFiles = (answers, config) => {
-  const to = changeCase.pascal(config.to)
+const renameInFiles = (answers, config) =>
+  new Promise((resolve, reject) => {
+    const to = changeCase.pascal(config.to)
 
-  if (!config.dir) throw Error('`dir` is required')
-  if (!config.from) throw Error('`from` is required')
-  if (!to) throw Error('`to` is required')
+    if (!config.from) throw Error('`from` is required')
+    if (!to) throw Error('`to` is required')
 
-  const base = path.join(__dirname, '../../../app/', config.dir)
-  const fromPath = path.join(base, config.from)
+    const appDir = path.join(__dirname, '../../../app/**/*.js')
 
-  let changes = []
-  try {
-    changes = replace.sync({
-      files: [
-        `${fromPath}/*`,
-        `${fromPath}/tests/*`,
-        `${base}/index.js`,
-      ],
-      from: new RegExp(config.from, 'g'),
-      to,
-    })
-  } catch (e) {
-    throw e
-  }
+    let changes = []
+    try {
+      changes = replace.sync({
+        files: appDir,
+        from:  new RegExp(config.from, 'g'),
+        to,
+      })
+    } catch (e) {
+      reject(e)
+    }
 
-  const spacer = '\n          '
-  return `${spacer}${changes.join(spacer)}`
-}
+    if (!changes.length) {
+      reject(Error('No files changed'))
+    }
+
+    const spacer = '\n          '
+    resolve(`${spacer}${changes.join(spacer)}`)
+  })
 
 module.exports = {
   renameInFiles,
