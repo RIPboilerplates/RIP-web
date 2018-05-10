@@ -21,6 +21,7 @@ module.exports = {
       ...props,
     }, {
       type: 'rename-directory',
+      dir:  'components',
       ...props,
     }]
   },
