@@ -13,7 +13,8 @@ let props
 beforeEach(() => {
   component = null
   props = {
-    loggedIn: false,
+    loggedIn:       false,
+    setRedirectUrl: jest.fn(),
   }
 })
 

@@ -17,6 +17,10 @@ class App extends React.Component {
     }
   }
 
+  componentWillMount() {
+    if (!this.props.loggedIn) this.props.setRedirectUrl()
+  }
+
   render() {
     const { loggedIn } = this.props
 
@@ -30,7 +34,8 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  loggedIn: PropTypes.bool.isRequired,
+  loggedIn:       PropTypes.bool.isRequired,
+  setRedirectUrl: PropTypes.func.isRequired,
 }
 
 export default App

@@ -5,6 +5,9 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
+
+import { setRedirectUrlAction } from 'redux/Navigation'
+
 import Component from './component'
 
 const mapStateToProps = (state) => ({
@@ -13,7 +16,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => (
   bindActionCreators({
-    // App Actions
+    setRedirectUrl: setRedirectUrlAction,
   }, dispatch)
 )
 

@@ -10,7 +10,7 @@ import Routes from './constants'
 
 const RootNav = () => (
   <Switch>
-    <Route exact path={Routes.home} component={HomePage} />
+    <Route exact path={Routes.root} component={HomePage} />
     <Route component={NotFoundPage} />
   </Switch>
 )

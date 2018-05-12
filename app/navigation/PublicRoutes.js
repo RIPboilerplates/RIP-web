@@ -10,8 +10,8 @@ import Routes from './constants'
 
 const PublicRoutes = () => (
   <Switch>
-    <Route component={LoginPage} />
-    <Redirect from={'/*'} to={Routes.login} />
+    <Route path={Routes.login} component={LoginPage} />
+    <Redirect to={Routes.login} />
   </Switch>
 )
 

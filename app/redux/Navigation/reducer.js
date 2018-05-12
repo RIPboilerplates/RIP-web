@@ -1,5 +1,6 @@
 import { fromJS } from 'immutable'
 import {
+  SET_REDIRECT_URL,
   INITIAL_STATE,
   LOCATION_CHANGE,
 } from './constants'
@@ -22,6 +23,9 @@ export const reducer = (state = initialState, action) => {
       return state.merge({
         location: action.payload,
       })
+    case SET_REDIRECT_URL:
+      return state
+        .set('redirectUrl', action.payload)
     default:
       return state
   }

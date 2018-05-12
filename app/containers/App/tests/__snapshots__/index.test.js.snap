@@ -2,7 +2,7 @@
 
 exports[`App Component Renders default 1`] = `
 <div
-  className="styles__Container-eZxbLb gnPRpr"
+  className="styles__Container-eZxbLb cxuUDL"
 >
   <PublicNav />
 </div>

@@ -2,7 +2,7 @@
 
 exports[`App Component Snapshot Renders default 1`] = `
 <div
-  className="styles__Container-eZxbLb gnPRpr"
+  className="styles__Container-eZxbLb cxuUDL"
 >
   <PublicNav />
 </div>
@@ -10,7 +10,7 @@ exports[`App Component Snapshot Renders default 1`] = `
 
 exports[`App Component Snapshot Renders logged in 1`] = `
 <div
-  className="styles__Container-eZxbLb gnPRpr"
+  className="styles__Container-eZxbLb cxuUDL"
 >
   <MainNav />
 </div>

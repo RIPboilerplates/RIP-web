@@ -1,17 +1,20 @@
 import { fromJS } from 'immutable'
 import { reducer } from '../reducer'
 import {
-  INITIAL_STATE,
   LOCATION_CHANGE,
+  SET_REDIRECT_URL,
+  INITIAL_STATE,
 } from '../constants'
 
 describe('navigation reducer', () => {
-  let result
   let initialState
+  let result
+  let store
 
   beforeEach(() => {
     initialState = { ...INITIAL_STATE }
     result = { ...INITIAL_STATE }
+    store = null
   })
 
   it('returns the initial state', () => {
@@ -22,10 +25,15 @@ describe('navigation reducer', () => {
     const payload = 'test-location'
     result.location = payload
 
-    const store = reducer(
-      fromJS(initialState),
-      { type: LOCATION_CHANGE, payload }
-    )
+    store = reducer(fromJS(initialState), { type: LOCATION_CHANGE, payload })
+    expect(store.toJS()).toEqual(result)
+  })
+
+  it('returns state for SET_REDIRECT_URL', () => {
+    result.redirectUrl = '/route'
+
+    store = reducer(fromJS(initialState), { type: SET_REDIRECT_URL, payload: '/route' })
     expect(store.toJS()).toEqual(result)
   })
 })
+

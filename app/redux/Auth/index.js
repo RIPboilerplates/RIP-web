@@ -1,4 +1,5 @@
 import { push } from 'react-router-redux'
+import Routes from 'navigation/constants'
 import {
   SIGN_IN,
   SIGN_OUT,
@@ -7,9 +8,9 @@ import {
 /**
  * Auth Action to perform Authenticate Anonymous
  */
-export const signInAction = () => (dispatch) => {
+export const signInAction = () => (dispatch, getState) => {
   dispatch({ type: SIGN_IN })
-  dispatch(push('/'))
+  dispatch(push(getState().getIn(['nav', 'redirectUrl'])))
 }
 
 /**
@@ -17,5 +18,5 @@ export const signInAction = () => (dispatch) => {
  */
 export const signOutAction = () => (dispatch) => {
   dispatch({ type: SIGN_OUT })
-  dispatch(push('/login'))
+  dispatch(push(Routes.login))
 }

@@ -11,20 +11,27 @@ import {
 describe('Auth actions', () => {
   let dispatch
   let result
+  let getIn
+
+  const getState = jest.fn(() => ({ getIn }))
 
   beforeEach(() => {
     dispatch = jest.fn()
     result = null
+    getIn = null
   })
 
   describe('signInAction', () => {
     it('dispatches correctly', () => {
-      signInAction()(dispatch)
+      getIn = jest.fn(() => '/test')
+
+      signInAction()(dispatch, getState)
 
       result = {
         type: SIGN_IN,
       }
       expect(dispatch).toHaveBeenCalledWith(result)
+      expect(getIn).toHaveBeenCalled()
     })
   })
 

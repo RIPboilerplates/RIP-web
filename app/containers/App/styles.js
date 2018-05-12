@@ -6,5 +6,6 @@ export default {
     display: flex;
     flex: 1;
     height: 100%;
+    overflow-y: scroll;
   `,
 }
