@@ -44,9 +44,10 @@ module.exports = {
     name:    'defaultValue',
     message: 'What type of empty value should the variables default value be:',
     default: 'null',
-    choices: () => ['null', '\'\'', '{}', '[]', 'false', 'true'],
+    choices: () => ['null', "''", '{}', '[]', 'false', 'true'],
   }],
   actions: (data) => {
+    console.log(data.defaultValue) // eslint-disable-line no-console
     const actions = [{
       type:         'modify',
       path:         '../../app/redux/{{properCase name}}/constants.js',
