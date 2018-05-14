@@ -47,16 +47,18 @@ describe('{{ camelCase name }} reducer', () => {
   it('returns state for {{ constantCase actionName }}_FULFILLED', () => {
     setFetched()
     result.{{ stateVariable}} = 'YAY!!'
+    payload: 'YAY!!'
 
-    store = reducer(fromJS(initialState), { type: {{ constantCase actionName }}_FULFILLED, payload: 'YAY!!' })
+    store = reducer(fromJS(initialState), { type: {{ constantCase actionName }}_FULFILLED, payload })
     expect(store.toJS()).toEqual(result)
   })
 
   it('returns state for {{ constantCase actionName }}_REJECTED', () => {
     setFetched()
     result.error = error
+    payload = error
 
-    store = reducer(fromJS(initialState), { type: {{ constantCase actionName }}_REJECTED, payload: error })
+    store = reducer(fromJS(initialState), { type: {{ constantCase actionName }}_REJECTED, payload })
     expect(store.toJS()).toEqual(result)
   })
 })

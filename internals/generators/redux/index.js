@@ -70,10 +70,16 @@ module.exports = {
     templateFile: './redux/thunks.test.js.hbs',
     abortOnFail:  true,
   }, {
-    type:         'modify',
+    type:         'append',
     path:         '../../app/reducers.js',
-    pattern:      /(\.\.\.injectedReducers,\n)/,
+    pattern:      /(\.\.\.injectedReducers,)/,
     templateFile: './redux/modify-reducers.hbs',
+    abortOnFail:  true,
+  }, {
+    type:         'modify',
+    path:         '../../app/utils/mockStore.js',
+    pattern:      /(\nconst defaultState = {)/,
+    templateFile: './redux/modify-mockStore.hbs',
     abortOnFail:  true,
   }],
 }
