@@ -5,7 +5,7 @@ import {
 describe('{{ properCase name }} thunks', () => {
   describe('{{ camelCase actionName }}Thunk', () => {
     it('resolves asynchronously', async () => {
-      expect.assertions(1)
+      expect.hasAssertions()
       await expect({{ camelCase actionName }}Thunk())
         .resolves
         .toEqual('YAY!!')

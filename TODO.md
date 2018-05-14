@@ -12,7 +12,7 @@
  - [ ] add route gen
  - [ ] addTo options: defaultProps, Methods tests, messages
  - [ ] modal redux and generators
- - [ ] replace number assertion with `expect.hasAssertions()`
+ - [x] replace number assertion with `expect.hasAssertions()`
 
 ### v0.4
  - [ ] choose redux from list
